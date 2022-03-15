@@ -6,13 +6,13 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:40:20 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/14 17:41:55 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/15 17:00:02 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

@@ -6,13 +6,13 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:33:20 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/14 17:42:26 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/15 17:00:03 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	isalnum(int c)
+int		ft_isalnum(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);

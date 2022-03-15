@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 17:43:16 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/15 17:00:00 by jaeywon          ###   ########.fr       */
+/*   Created: 2022/03/15 16:44:48 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/15 16:46:45 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_isprint(int c)
+void    ft_bzero(void *s, size_t n)
 {
-	if ( c >= ' ' && c < 127)
-		return (1);
-	return (0);
+    size_t  i;
+
+    i = 0;
+    while (i < n)
+    {
+        *(unsigned char *)(s + i) = 0;
+        i++;
+    }
 }
