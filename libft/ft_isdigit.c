@@ -6,13 +6,13 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:10:13 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/14 17:38:27 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/15 17:00:01 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
