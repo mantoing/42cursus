@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonseoyun <wonseoyun@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:14:00 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/16 16:46:37 by wonseoyun        ###   ########.fr       */
+/*   Updated: 2022/03/17 16:47:42 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int  is_space(char c)
+static int  isspace(char c)
 {
   if (c == '\t' || c == '\f' || c == '\n'
       || c == '\r' || c == '\v' || c == ' ')
@@ -27,7 +27,7 @@ int ft_atoi(const char *str)
   long  result;
 
   i = 0;
-  while (is_space(str[i]))
+  while (isspace(str[i]))
     i++;
   sign = 1;
   if (str[i] == '+' || str[i] == '-')
@@ -38,7 +38,11 @@ int ft_atoi(const char *str)
   }
   result = 0;
   while (ft_isdigit(str[i]))
-    result = (result * 10) + (str[i++] - '0');
+  {
+    result *= 10;
+    result += str[i] - '0';
+    i++;
+  }
     if (result < 0)
       return ((sign + 1) / -2);
     return (result * sign);    
