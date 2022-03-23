@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 00:51:47 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/23 17:34:17 by jaeywon          ###   ########.fr       */
+/*   Created: 2022/03/23 17:51:52 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/23 18:00:13 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_strjoin(char const *s1, char constr *s2)
 {
-	void	*ret;
+	char	*s_new;
+	size_t	len1;
+	size_t	len2;
 
-	ret = malloc(count * size * sizeof(char));
-	if (!ret)
-		return (NULL);
-	ft_bzero(ret, count * size);
-	return (ret);
+	if (s1 == 0 && s2 == 0)
+		return (0);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	s_new = (char *)malloc(sizeof(char) * (len2 + len1 + 1));
+	if (s_new == 0)
+		return (0);
+	ft_memcpy(s_new, s1, len1);
+	ft_memcpy(s_new + len1, s2, len2);
+	s_new[len1 + len2] = 0;
+	return (s_new);	
 }
