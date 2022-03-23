@@ -6,23 +6,23 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 17:59:22 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/17 16:47:48 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/23 14:59:45 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void  ft_memchr(const void *ptr, int c, size_t len)
+void	ft_memchr(const void *ptr, int c, size_t len)
 {
-  unsigned char *ret;
+	unsigned char	*ret;
 
-  ret = (unsigned char *)ptr;
-  while (len--)
-  {
-    if (*ret == (unsigned char)c)
-      return (ret);
-    else
-      ret++;  
-  }
-  return (0);
+	ret = (unsigned char *)ptr;
+	while (len--)
+	{
+		if (*ret == (unsigned char)c)
+			return (ret);
+		else
+			ret++;
+	}
+	return (0);
 }

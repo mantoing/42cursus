@@ -6,19 +6,19 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:16:54 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/15 15:34:55 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/23 15:10:08 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-char    *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    while (*s != c)
-    {
-        if (*s == '\0')
-            return (0);
-        s++;    
-    }
-    return ((char *)s);
+	while (*s != c)
+	{
+		if (*s == '\0')
+			return (0);
+		s++;
+	}
+	return ((char *)s);
 }

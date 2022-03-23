@@ -6,15 +6,15 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 17:43:16 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/15 17:00:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/23 14:57:48 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 int	ft_isprint(int c)
 {
-	if ( c >= ' ' && c < 127)
+	if (c >= ' ' && c < 127)
 		return (1);
 	return (0);
 }
