@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:45:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/23 19:47:02 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/24 02:13:19 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_list
+{
+    void          *content;
+    struct s_list *next;
+}              t_list;
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
