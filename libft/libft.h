@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:45:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/23 14:18:53 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/23 19:47:02 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,15 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_itoa(int n);
+void    ft_putchar_fd(char c, int fd);
+void    ft_putendl_fd(char *str, int fd);
+void	ft_putnbr_fd(int nb, int fd);
+void    ft_putstr_fd(char *str, int fd);
+void	ft_striteri(char *str, void (*f)(unsigned int, char *));
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strmapi(char const *str, char (*f)(unsigned int, char));
+char	*ft_strtrim(char const *s1, char const *set);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif

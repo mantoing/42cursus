@@ -6,13 +6,13 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 20:42:59 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/23 13:45:11 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/23 19:45:26 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int nb, int fd)
+void	ft_putnbr_fd(int nb, int fd)
 {
     if (fd < 0)
         return ;
