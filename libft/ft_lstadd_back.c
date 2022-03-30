@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:45:38 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:46:19 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:35:34 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstadd_back(t_list **list, t_list *new)
 {
 	t_list	*back;
 
-	if (!list || !back)
+	if (!list || !new)
 		return ;
 	back = *list;
 	if (!(*list))

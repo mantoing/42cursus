@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:23:52 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:25:09 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:18:41 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 char	*ft_strrchr(const char *str, int c)
 {
 	size_t	s_len;
+	char	*tmp;
 
-	s_len = ft_strlen(str);
+	tmp = (char *)str;
+	s_len = ft_strlen(tmp);
 	while (s_len != 0 && str[s_len] != c)
 		s_len--;
 	if (str[s_len] == c)

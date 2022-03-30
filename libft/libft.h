@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:45:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:54:53 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:49:50 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_lstclear(t_list **list, void (*del)(void *));
 void	ft_lstdelone(t_list *list, void (*del)(void *));
 void	ft_lstiter(t_list *list, void (*f)(void *));
 t_list	*ft_lstlast(t_list *list);
-char	*ft_lstmapi(char const *str, char (*f)(unsigned int, char));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *list);
 int		ft_atoi(const char *str);
@@ -37,7 +37,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
-void	ft_memchr(const void *ptr, int c, size_t len);
+void	*ft_memchr(const void *ptr, int c, size_t len);
 int		ft_memcmp(void *s1, void *s2, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t len);

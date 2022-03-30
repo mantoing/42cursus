@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:17:48 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:49:09 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:45:49 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_lstmapi(char const *str, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char			*ret;
-	unsigned int	i;
+	t_list	*ret;
+	t_list	*tmp;
 
-	if (!str || !f)
+	if (!lst || !f)
 		return (NULL);
-	ret = malloc(sizeof (char) * (ft_strlen((char *)str) + 1));
-	if (!ret)
-		return (NULL);
-	i = 0;
-	while (str[i])
+	ret = NULL;
+	while (lst)
 	{
-		ret[i] = f(i, str[i]);
-		i++;
+		tmp = ft_lstnew((*f)(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&ret, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&ret, tmp);
+		tmp = tmp->next;
+		lst = lst->next;
 	}
-	ret[i] = 0;
 	return (ret);
 }
