@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:19:26 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:37:57 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:27:47 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *str, char (*f)(unsigned int, char))
 	if (!str || !f)
 		return (NULL);
 	i = 0;
-	size = ft_strlen(str);
+	size = ft_strlen((char *)str);
 	res = (char *)malloc(sizeof(char) * size + 1);
 	if (!res)
 		return (0);

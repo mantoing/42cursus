@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 01:11:27 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/23 15:12:19 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 15:22:36 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ char	*ft_strdup(const char *s1)
 	size_t	len;
 	size_t	i;
 	char	*ret;
+	char	*tmp;
 
-	len = ft_strlen(len);
+	tmp = (char *)s1;
+	len = ft_strlen(tmp);
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
 		return (NULL);

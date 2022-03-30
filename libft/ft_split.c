@@ -5,95 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 14:18:09 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:36:21 by jaeywon          ###   ########.fr       */
+/*   Created: 2022/03/30 16:26:28 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/30 16:27:32 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*split_dup(char const *str, size_t len)
+static char	**ft_malloc_ret(char *s, char c)
 {
-	char	*s;
-	size_t	i;
+	size_t	cnt;
+	char	**ret;
 
-	i = 0;
-	s = (char *)malloc(sizeof(char) * (len + 1));
+	cnt = 0;
 	if (!s)
 		return (NULL);
-	while (i < len)
+	while (*s)
 	{
-		s[i] = str[i];
-		i++;
-	}
-	return (s);
-}
-
-size_t	ft_countstr(char const *str, char c)
-{
-	size_t	i;
-	size_t	cnt;
-
-	i = 0;
-	cnt = 0;
-	while (str[i])
-	{
-		if (str[i] != c)
+		if (*s != c)
 		{
-			while (str[i] && str[i] != c)
-				c++;
 			cnt++;
+			while (*s != c && *s)
+				s++;
 		}
 		else
-			i++;
+			s++;
 	}
-	return (cnt);
-}
-
-size_t	split_len(char const *str, char c)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len] && str[len] != c)
-		len++;
-	return (len);
-}
-
-char	**errorcheck(void)
-{
-	char	**let;
-
-	let = (char **)malloc(sizeof(char *));
-	if (!let)
+	ret = (char **)malloc(sizeof(char *) * (cnt + 1));
+	if (!ret)
 		return (NULL);
-	let[0] = 0;
-	return (let);
+	return (ret);
+}
+
+static char	*ft_malloc_ret_n(char *str, char *start, char *end)
+{
+	int	i;
+
+	str = (char *)malloc(end - start + 1);
+	if (!str)
+		return (NULL);
+	i = -1;
+	while (++i < end - start)
+		str[i] = start[i];
+	str[i] = 0;
+	return (str);
+}
+
+static void	*free_all(char **str, size_t l)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] && i < l)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (NULL);
 }
 
 char	**ft_split(char const *str, char c)
 {
-	size_t	strnum;
-	size_t	i;
-	size_t	len;
 	char	**ret;
+	char	*start;
+	size_t	i;
 
-	if (!str || *str == '\0')
-		return (errorcheck());
-	i = 0;
-	len = 0;
-	strnum = ft_countstr(str, c);
-	ret = (char **)malloc(sizeof(char *) * (strnum * 1));
-	if (ret == NULL)
+	ret = ft_malloc_ret((char *)str, c);
+	if (!ret)
 		return (NULL);
-	while (i < strnum)
+	i = 0;
+	while (*str)
 	{
-		while (str[0] == c)
+		if (*str != c)
+		{
+			start = (char *)str;
+			while (*str && *str != c)
+				str++;
+			ret[i] = ft_malloc_ret_n(ret[i], start, (char *)str);
+			if (!ret[i++])
+				return (free_all(ret, i));
+		}
+		else
 			str++;
-		len = split_len(str, c);
-		ret[i] = split_dup(str, len);
-		str = str + len;
-		i++;
 	}
 	ret[i] = 0;
 	return (ret);

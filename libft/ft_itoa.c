@@ -5,61 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 19:30:42 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:30:37 by jaeywon          ###   ########.fr       */
+/*   Created: 2022/03/30 15:53:17 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/30 16:13:17 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_cntlen(int n)
+static size_t	numlen(int num)
 {
-	int	res;
+	size_t		cnt;
+	long long	n;
 
-	res = 0;
-	if (n < 0)
+	n = num;
+	cnt = 0;
+	if (n == 0)
+		return (1);
+	else if (n < 0)
 	{
 		n *= -1;
-		res++;
+		cnt++;
 	}
 	while (n)
 	{
 		n /= 10;
-		res++;
+		cnt++;
 	}
-	return (res);
+	return (cnt);
 }
 
-static char	*trans(char *ret, long n, int len)
+static void	trans(char *res, int num, int len)
 {
-	int	cnt;
+	long long	n;
 
-	cnt = 0;
+	n = num;
 	if (n < 0)
 	{
 		n *= -1;
-		ret[0] = '-';
-		cnt++;
+		res[0] = '-';
 	}
-	while (len > res)
+	if (n >= 10)
 	{
-		ret[len - 1] = (n % 10) + '0';
-		n /= 10;
-		len--;
+		trans(res, (n / 10), --len);
+		res[len] = (n % 10) + '0';
 	}
-	return (ret);
+	else
+		res[--len] = (n % 10) + '0';
 }
 
 char	*ft_itoa(int n)
 {
-	char	*ret;
+	char	*res;
 	int		len;
 
-	len = ft_cntlen(n);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (NULL);
-	ret = trans(ret, (long)n, len);
-	ret[len] = 0;
-	return (ret);
+	len = numlen(n);
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (0);
+	trans(res, n, len);
+	res[len] = '\0';
+	return (res);
 }
