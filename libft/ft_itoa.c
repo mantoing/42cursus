@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:30:42 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/23 19:41:58 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/03/30 14:30:37 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_cntlen(int n)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	if (n < 0)
@@ -32,7 +32,7 @@ static int	ft_cntlen(int n)
 
 static char	*trans(char *ret, long n, int len)
 {
-	int cnt;
+	int	cnt;
 
 	cnt = 0;
 	if (n < 0)
@@ -61,5 +61,5 @@ char	*ft_itoa(int n)
 		return (NULL);
 	ret = trans(ret, (long)n, len);
 	ret[len] = 0;
-	return (ret);	
+	return (ret);
 }

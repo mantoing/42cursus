@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/30 14:18:09 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/30 14:36:21 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*split_dup(char const *str, size_t len)
@@ -12,9 +24,9 @@ char	*split_dup(char const *str, size_t len)
 	while (i < len)
 	{
 		s[i] = str[i];
-		i++; 
+		i++;
 	}
-	return (s);	
+	return (s);
 }
 
 size_t	ft_countstr(char const *str, char c)
@@ -30,21 +42,22 @@ size_t	ft_countstr(char const *str, char c)
 		{
 			while (str[i] && str[i] != c)
 				c++;
-			cnt++;	 
+			cnt++;
 		}
 		else
 			i++;
 	}
 	return (cnt);
 }
+
 size_t	split_len(char const *str, char c)
 {
 	size_t	len;
-	
+
 	len = 0;
 	while (str[len] && str[len] != c)
 		len++;
-	return (len);	
+	return (len);
 }
 
 char	**errorcheck(void)
@@ -55,9 +68,9 @@ char	**errorcheck(void)
 	if (!let)
 		return (NULL);
 	let[0] = 0;
-	return (let); 	
+	return (let);
 }
- 
+
 char	**ft_split(char const *str, char c)
 {
 	size_t	strnum;
@@ -71,7 +84,7 @@ char	**ft_split(char const *str, char c)
 	len = 0;
 	strnum = ft_countstr(str, c);
 	ret = (char **)malloc(sizeof(char *) * (strnum * 1));
-	if (ret== NULL)
+	if (ret == NULL)
 		return (NULL);
 	while (i < strnum)
 	{
@@ -80,8 +93,8 @@ char	**ft_split(char const *str, char c)
 		len = split_len(str, c);
 		ret[i] = split_dup(str, len);
 		str = str + len;
-		i++;	 	
+		i++;
 	}
 	ret[i] = 0;
-	return (ret);	
+	return (ret);
 }
