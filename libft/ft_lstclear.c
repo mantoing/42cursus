@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 00:51:47 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/23 17:34:17 by jaeywon          ###   ########.fr       */
+/*   Created: 2022/03/30 14:17:39 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/03/30 14:46:45 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_lstclear(t_list **list, void (*del)(void *))
 {
-	void	*ret;
+	t_list	*tmp;
 
-	ret = malloc(count * size * sizeof(char));
-	if (!ret)
-		return (NULL);
-	ft_bzero(ret, count * size);
-	return (ret);
+	if (!list || !del)
+		return ;
+	while (*list)
+	{
+		tmp = (*list)->next;
+		del((*list)->content);
+		free(*list);
+		(*list) = tmp;
+	}
+	*list = 0;
 }
