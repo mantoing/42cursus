@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 00:51:47 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/30 14:29:36 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/05 17:00:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	ret = malloc(count * size * sizeof(char));
 	if (!ret)
-		return (NULL);
+		return (0);
 	ft_bzero(ret, count * size);
 	return (ret);
 }

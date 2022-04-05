@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:51:52 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 15:36:19 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:45:37 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len1;
 	size_t	len2;
 
-	if (s1 == 0 && s2 == 0)
+	if (!s1 || !s2)
 		return (0);
 	len1 = ft_strlen((char *)s1);
 	len2 = ft_strlen((char *)s2);
