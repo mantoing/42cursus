@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:51:52 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/04/05 14:45:37 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:20:06 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s_new;
-	size_t	len1;
-	size_t	len2;
+	size_t	l1;
+	size_t	l2;
 
 	if (!s1 || !s2)
 		return (0);
-	len1 = ft_strlen((char *)s1);
-	len2 = ft_strlen((char *)s2);
-	s_new = (char *)malloc(sizeof(char) * (len2 + len1 + 1));
+	l1 = ft_strlen((char *)s1);
+	l2 = ft_strlen((char *)s2);
+	s_new = (char *)malloc(sizeof(char) * (l2 + l1 + 1));
 	if (s_new == 0)
 		return (0);
-	ft_memcpy(s_new, s1, len1);
-	ft_memcpy(s_new + len1, s2, len2);
-	s_new[len1 + len2] = 0;
+	ft_memcpy(s_new, s1, l1);
+	ft_memcpy(s_new + l1, s2, l2);
+	s_new[l1 + l2] = 0;
 	return (s_new);
 }

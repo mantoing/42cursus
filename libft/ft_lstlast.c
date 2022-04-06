@@ -6,19 +6,19 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:17:46 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:48:21 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:26:12 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *list)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (!list)
+	if (!lst)
 		return (NULL);
-	while (list -> next)
+	while (lst -> next)
 	{
-		list = list -> next;
+		lst = lst -> next;
 	}
-	return (list);
+	return (lst);
 }
