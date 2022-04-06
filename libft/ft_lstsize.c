@@ -6,21 +6,21 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 14:17:51 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 14:50:04 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:25:54 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *list)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
 	i = 0;
-	while (list)
+	while (lst)
 	{
 		i++;
-		list = list -> next;
+		lst = lst -> next;
 	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:26:28 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/04/05 14:45:39 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/04/06 16:21:37 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ char	**malloc_arr(char *str, char c)
 	return (arr);
 }
 
-char	*split_dup(char const *s, size_t len)
+char	*split_dup(char const *str, size_t len)
 {
-	char	*str;
+	char	*s;
 	size_t	i;
 
 	i = 0;
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
 		return (0);
 	while (i < len)
 	{
-		str[i] = s[i];
+		s[i] = str[i];
 		i++;
 	}
-	str[i] = 0;
-	return (str);
+	s[i] = 0;
+	return (s);
 }
 
 size_t	split_len(char const *str, char c)
@@ -77,7 +77,7 @@ void	*allfree(char **str, size_t l)
 	return (NULL);
 }
 
-char	**ft_split(char const *str, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t		i;
 	size_t		len;
@@ -85,22 +85,22 @@ char	**ft_split(char const *str, char c)
 
 	i = 0;
 	len = 0;
-	arr = malloc_arr((char *)str, c);
+	arr = malloc_arr((char *)s, c);
 	if (!arr)
 		return (0);
-	while (*str)
+	while (*s)
 	{
-		if (*str != c)
+		if (*s != c)
 		{
-			len = split_len(str, c);
-			arr[i] = split_dup(str, len);
-			str += len;
+			len = split_len(s, c);
+			arr[i] = split_dup(s, len);
+			s += len;
 			len = 0;
 			if (!arr[i++])
 				return (allfree(arr, i));
 		}
 		else
-			str++;
+			s++;
 	}
 	arr[i] = 0;
 	return (arr);
