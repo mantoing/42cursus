@@ -1,31 +1,30 @@
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i] != '\0')
-		i++;
+	if (!s)
+		return (0);
+	while (s[i])
+		++i;
 	return (i);
 }
 
 char	*ft_strchr(const char *str, int c)
 {
-	size_t			i;
-	unsigned char	a;
-
-	a = (unsigned char)c;
-	i = 0;
-	while (str[i])
+	if (!str)
+		return (NULL);
+	while (*str)
 	{
-		if (str[i] == a)
-			return ((char *)(str + i));
-		i++;
+		if (*str == (char)c)
+			return ((char *)str);
+		++str;
 	}
-	if (!c)
-		return ((char *)(str + i));
-	return (0);
+	if (*str == (char)c)
+		return ((char *)str);
+	return (NULL);
 }
 
 char	*ft_strdup(const char *s1)
@@ -50,21 +49,21 @@ char	*ft_strdup(const char *s1)
 	return (ret);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 {
 	size_t	i;
 	size_t	ret;
 
 	i = 0;
 	ret = ft_strlen(src);
-	if (dstsize == 0)
+	if (destsize == 0)
 		return (ret);
-	while (src[i] && i < (dstsize - 1))
+	while (src[i] && i < (destsize - 1))
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		++i;
 	}
-	dst[i] = 0;
+	dest[i] = 0;
 	return (ret);
 }
 

@@ -8,7 +8,7 @@ char	*gline(char *save)
 	if (!save)
 		return (NULL);
 	i = 0;
-	while (save[i] != '\n' || save[i])
+	while (save[i] != '\n' && save[i])
 		++i;
 	if (save[i] == '\n')
 		++i;
@@ -16,7 +16,7 @@ char	*gline(char *save)
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (save[i] != '\n' || save[i])
+	while (save[i] != '\n' && save[i])
 	{
 		line[i] = save[i];
 		++i;
