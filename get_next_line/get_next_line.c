@@ -1,85 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/07 16:51:13 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/06/07 18:21:58 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-char	*gline(char *save)
+int	check_newline(char *line)
 {
-	char	*line;
-	size_t	i;
+	int	i;
 
-	if (!save)
-		return (NULL);
 	i = 0;
-	while (save[i] != '\n' && save[i])
-		++i;
-	if (save[i] == '\n')
-		++i;
-	line = (char *)malloc(sizeof(char) * (i + 1));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (save[i] != '\n' && save[i])
+	while (line[i])
 	{
-		line[i] = save[i];
-		++i;
+		if (line[i] == '\n')
+			return (i);
+		i++;
 	}
-	if (save[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
-	return (line);				
+	return (-1);
 }
 
-char	*read_files(int fd, char *save)
+char	*get_newline(char **line, int rsize)
 {
-	ssize_t	bread;
-	char	*buffer;
-	char	*temp;
+	char	*res;
+	char	*tmp;
+	int		pos;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	if (!line || !*line || rsize < 0)
 		return (NULL);
-	bread = read(fd, buffer, BUFFER_SIZE);
-	while (bread > 0)
+	pos = check_newline(*line);
+	if (pos > -1)
 	{
-		buffer[bread] = '\0';
-		temp = save;
-		save = ft_strjoin(temp, buffer);
-		free(temp);
-		temp = NULL;
-		if (ft_strchr(save, '\n') || !save)
-			break ;
-		bread = read(fd, buffer, BUFFER_SIZE);	
+		res = ft_substr(*line, 0, pos + 1);
+		tmp = ft_substr(*line, pos + 1, ft_strlen(*line) - (pos + 1));
+		free(*line);
+		*line = tmp;
+		if (**line != '\0')
+			return (res);
 	}
-	free(buffer);
-	buffer = NULL;
-	if (bread < 0)
-		return (NULL);
-	return (save);		 
+	else
+		res = ft_strdup(*line);
+	free(*line);
+	*line = NULL;
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*line;
-	static char	*save;
-	char	*temp;
+	static char	*line[OPEN_MAX];
+	char		buff[BUFFER_SIZE + 1];
+	char		*tmp;
+	int			rsize;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
+	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	save = read_files(fd, save);
-	if (!save)
-		return (NULL);
-	if (*save)
+	rsize = read(fd, buff, BUFFER_SIZE);
+	while (rsize > 0)
 	{
-		line = gline(save);
-		if (!line)
+		buff[rsize] = '\0';
+		if (!line[fd])
+			line[fd] = ft_strdup("");
+		if (!line[fd])
 			return (NULL);
-		temp = save;
-		save = ft_strdup(save + ft_strlen(line));
-		free(temp);
-		temp = NULL;
-		if (!save)
+		tmp = line[fd];
+		line[fd] = ft_strjoin(tmp, buff);
+		free(tmp);
+		if (!line[fd])
 			return (NULL);
-		return (line);	
+		if (check_newline(line[fd]) > -1)
+			break ;
+		rsize = read(fd, buff, BUFFER_SIZE);
 	}
-	free(save);
-	save = NULL;
-	return (NULL);
+	return (get_newline(&line[fd], rsize));
 }
