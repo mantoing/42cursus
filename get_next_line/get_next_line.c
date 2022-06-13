@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:51:13 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/06/08 18:38:39 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/06/13 16:16:59 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,42 @@ char	*get_newline(char **line, int rsize)
 	return (res);
 }
 
-char	*get_next_line(int fd)
+static int add_rsize(int rsize, int fd, char *buff, char **line)
 {
-	static char	*line[OPEN_MAX];
-	char		buff[BUFFER_SIZE + 1];
-	char		*tmp;
-	int			rsize;
-
-	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	rsize = read(fd, buff, BUFFER_SIZE);
+	char	*tmp;
+	
 	while (rsize > 0)
 	{
 		buff[rsize] = '\0';
 		if (!line[fd])
 			line[fd] = ft_strdup("");
 		if (!line[fd])
-			return (NULL);
+			return (-2);
 		tmp = line[fd];
 		line[fd] = ft_strjoin(tmp, buff);
 		free(tmp);
 		if (!line[fd])
-			return (NULL);
+			return (-2);
 		if (check_newline(line[fd]) > -1)
 			break ;
 		rsize = read(fd, buff, BUFFER_SIZE);
 	}
+	return (rsize);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*line[OPEN_MAX];
+	char		buff[BUFFER_SIZE + 1];
+	int			rsize;
+
+	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	rsize = read(fd, buff, BUFFER_SIZE);
+	rsize = add_rsize(rsize, fd, buff, line);
+	if (rsize == -2)
+		return (NULL);
+	if (!line[fd])
+		return (NULL);	
 	return (get_newline(&line[fd], rsize));
 }
