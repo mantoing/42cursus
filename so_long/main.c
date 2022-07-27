@@ -1,4 +1,3 @@
-#include "./mlx/mlx.h"
 #include <stdio.h>
 #include "solong.h"
 int quit_game(t_gameset *gameset)
@@ -34,7 +33,7 @@ int main(int ac, char **av)
 {
     t_gameset   gameset;
 
-    if (ac != 2) //|| extension_check(av[1]) == 0)
+    if (ac != 2 || extension_check(av[1]) == 0)
         print_error("ac Error\n");
     set_gameinit(&gameset);
     read_map(av[1], &gameset);

@@ -1,9 +1,10 @@
 #ifndef SOLONG_H
 # define SOLONG_H
 
-# include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include "mlx.h"
 # include "get_next_line.h"
 
 typedef struct s_gameset
@@ -26,5 +27,6 @@ void check_map(t_gameset *gameset);
 void    read_map(char *map_file, t_gameset *gameset);
 void    prt_check_map(char line, char num);
 void    print_error(char *s);
+char	*ft_strjoin_without_NL(char *s1, char *s2);
 
 #endif

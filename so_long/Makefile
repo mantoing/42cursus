@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = main.c map.c print_error.c \
+SRC = main.c map.c print_error.c utils.c \
 		get_next_line.c get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
 RM = /bin/rm -f
@@ -20,4 +20,4 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re:	fclean all
+re:	fclean alls
