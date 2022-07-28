@@ -13,7 +13,6 @@ void    read_map(char *map_file, t_gameset *gameset)
     if (!line)
         print_error("Unvalid map\n");
     gameset->map_width = ft_strlen(line) - 1;
-    //printf("%d\n ", gameset->map_width);
     gameset->map_line = line;
     while (line)
     {       
@@ -26,10 +25,7 @@ void    read_map(char *map_file, t_gameset *gameset)
             free(line);
         }
         gameset->map_height++;
-        //printf("%s", gameset->map_line);
-        //printf("%d ", gameset->map_height);
     }
-     printf("%s", gameset->map_line);
     if (gameset->map_height * gameset->map_width != (int)ft_strlen(gameset->map_line))
         print_error("Map must be rectangular\n");
     close(fd);
@@ -49,9 +45,9 @@ void check_map(t_gameset *gameset)
     printf("0\n");
     while(i < (int)ft_strlen(gameset->map_line))
     {
-        if (i < gameset->map_width) //첫번째 줄 유효성 검사
+        if (i < gameset->map_width)
             prt_check_map(gameset->map_line[i], '1');
-        else if (i % gameset->map_width == 0 || i % gameset->map_width == gameset->map_width - 1) //두번째줄 유효성 검사
+        else if (i % gameset->map_width == 0 || i % gameset->map_width == gameset->map_width - 1)
             prt_check_map(gameset->map_line[i], '1');
         else if (i > ((int)ft_strlen(gameset->map_line) - gameset->map_width))
             prt_check_map(gameset->map_line[i], '1');   

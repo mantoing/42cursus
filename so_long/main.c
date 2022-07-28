@@ -32,6 +32,7 @@ int	extension_check(char *s)
 int main(int ac, char **av)
 {
     t_gameset   gameset;
+    t_img       img;
 
     if (ac != 2 || extension_check(av[1]) == 0)
         print_error("ac Error\n");
@@ -39,6 +40,7 @@ int main(int ac, char **av)
     read_map(av[1], &gameset);
     check_map(&gameset);    
     gameset.mlx = mlx_init();
-    gameset.win = mlx_new_window(gameset.mlx, 5 * 64, 5 * 64, "mlx 42");
+    gameset.win = mlx_new_window(gameset.mlx, gameset.map_width * 64, gameset.map_height * 64, "so_long");
+    image_init(&gameset, &img);
     mlx_loop(gameset.mlx);
 }
