@@ -29,10 +29,25 @@ int	extension_check(char *s)
 	return (1);
 }
 
+int press_key(int key, t_gameset *gameset)
+{
+	if (key == 13)
+		move_w(gameset);
+	else if (key == 0)
+		move_a(gameset);
+	else if (key == 1)
+		move_s(gameset);
+	else if (key == 2)
+		move_d(gameset);
+	else if (key == 53)
+		exit(0);
+	return (0);	
+}
+
 int main(int ac, char **av)
 {
     t_gameset   gameset;
-    t_img       img;
+    //t_img       img;
 
     if (ac != 2 || extension_check(av[1]) == 0)
         print_error("ac Error\n");
@@ -41,6 +56,8 @@ int main(int ac, char **av)
     check_map(&gameset);    
     gameset.mlx = mlx_init();
     gameset.win = mlx_new_window(gameset.mlx, gameset.map_width * 64, gameset.map_height * 64, "so_long");
-    image_init(&gameset, &img);
+	rendering(gameset);
+	mlx_key_hook(gameset.win, mlx_key_handle, 0);
     mlx_loop(gameset.mlx);
+    return (0);
 }
