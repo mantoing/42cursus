@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:51:13 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/06/13 16:16:59 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/01 18:50:38 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ char	*get_newline(char **line, int rsize)
 	return (res);
 }
 
-static int add_rsize(int rsize, int fd, char *buff, char **line)
+static int	add_rsize(int rsize, int fd, char *buff, char **line)
 {
 	char	*tmp;
-	
+
 	while (rsize > 0)
 	{
 		buff[rsize] = '\0';
@@ -87,6 +87,6 @@ char	*get_next_line(int fd)
 	if (rsize == -2)
 		return (NULL);
 	if (!line[fd])
-		return (NULL);	
+		return (NULL);
 	return (get_newline(&line[fd], rsize));
 }

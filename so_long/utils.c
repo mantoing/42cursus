@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/01 19:46:14 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/08/01 19:47:15 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "solong.h"
 
-char	*ft_strjoin_without_NL(char *s1, char *s2)
+char	*ft_strjoin_without_nl(char *s1, char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -32,7 +44,6 @@ void	ft_putchar_fd(char c, int fd)
 		return ;
 	write(fd, &c, 1);
 }
-
 
 void	ft_putnbr_fd(int nb, int fd)
 {
