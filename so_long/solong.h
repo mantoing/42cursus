@@ -31,25 +31,33 @@ typedef struct s_gameset
     int map_width;
     int map_height;
     char    *map_line;
-    int move_cnt;
-    int oj_cnt;
-    int oj_max;
+    int count;
+    int	coll;
+    int	player;
+    int	exit;
+	int	wall;
+	int tile;
+	int x;
+	int y;
     void    *mlx;
     void    *win;
     t_img   img;
 }   t_gameset;
 
 int	extension_check(char *s);
-void    set_gameinit(t_gameset *gameset);
-//int    key_press(int key, void*p);
-int quit_game(t_gameset *gameset);
 void check_map(t_gameset *gameset);
 void    read_map(char *map_file, t_gameset *gameset);
-void    prt_check_map(char line, char num);
 void    print_error(char *s);
 char	*ft_strjoin_without_NL(char *s1, char *s2);
-void    draw_img(t_gameset gameset, t_img img);
 void    rendering(t_gameset gameset);
 void    image_init(t_gameset gameset, t_img *img);
+void checking_count(t_gameset *gameset);
+void	ft_putnbr_fd(int nb, int fd);
+void	ft_putchar_fd(char c, int fd);
+void    clear_game(t_gameset gameset);
+void    move_w(t_gameset *gameset);
+void    move_s(t_gameset *gameset);
+void    move_a(t_gameset *gameset);
+void    move_d(t_gameset *gameset);
 
 #endif

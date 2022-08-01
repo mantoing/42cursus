@@ -42,5 +42,4 @@ void    rendering(t_gameset gameset)
 
     image_init(gameset, &img);
     draw_img(gameset, img);
-
 }
