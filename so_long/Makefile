@@ -5,7 +5,7 @@ SRC = main.c map.c print_error.c utils.c \
 		get_next_line.c get_next_line_utils.c \
 		images.c elements.c move.c
 OBJ = $(SRC:.c=.o)
-RM = /bin/rm -f
+RM = rm -f
 
 all: $(NAME)
 
@@ -21,4 +21,4 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re:	fclean alls
+re:	fclean all

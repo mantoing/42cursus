@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:40:01 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/01 19:47:03 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/02 17:56:29 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_gameset
 int		extension_check(char *s);
 void	check_map(t_gameset *gameset);
 void	read_map(char *map_file, t_gameset *gameset);
+size_t	ft_strlen_without_n(const char *str);
 void	print_error(char *s);
 char	*ft_strjoin_without_nl(char *s1, char *s2);
 void	rendering(t_gameset gameset);

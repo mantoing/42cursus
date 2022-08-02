@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:24:07 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/01 19:48:37 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/02 17:55:51 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	read_map(char *map_file, t_gameset *g)
 	line = get_next_line(fd);
 	if (!line)
 		print_error("Unvalid map\n");
-	g->map_width = ft_strlen(line) - 1;
+	g->map_width = ft_strlen_without_n(line);
 	g->map_line = line;
 	while (line)
 	{

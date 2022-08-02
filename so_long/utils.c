@@ -6,11 +6,21 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 19:46:14 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/01 19:47:15 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/02 17:56:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+size_t	ft_strlen_without_n(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\n')
+		i++;
+	return (i);
+}
 
 char	*ft_strjoin_without_nl(char *s1, char *s2)
 {
