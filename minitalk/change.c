@@ -1,5 +1,13 @@
 #include "minitalk.h"
 
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
 static	int	isspace(char c)
 {
 	if (c == '\t' || c == '\f' || c == '\n'

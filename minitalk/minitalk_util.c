@@ -49,3 +49,15 @@ size_t	ft_strlen(char *str)
 		i++;
 	return (i);
 }
+
+int	ft_pow(int num, int power)
+{
+	if (power == 0)
+		return (1);
+	else if (power < 0)
+		return (0);
+	else if (power > 0)
+		return (num *= ft_pow(num, power - 1));
+	else
+		return (1);
+}
