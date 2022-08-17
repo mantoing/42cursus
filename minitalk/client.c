@@ -1,42 +1,54 @@
 #include "minitalk.h"
 
-void send_byte(char byte, int pid)
+void send_byte(int pid, char byte)
 {
 	int i;
 
 	i = 7;
 	while (i >= 0)
 	{
-		if (byte >> i & 1)
-			kill(pid, SIGUSR2);
+		if (byte & (1 << i))
+		{
+			if (kill(pid, SIGUSR1) == SUCCESS)
+				usleep(400);
+			else
+				ft_putstr("kill 1 Failed\n");
+		}
 		else
-			kill(pid, SIGUSR1);
+		{
+			if (kill(pid, SIGUSR2) == SUCCESS)
+				usleep(400);
+			else
+				ft_putstr("kill 2 Failed\n");
+		}
 		i--;	
 	}
 }
 
-void	send_msg(char *str, int pid)
+void	send_msg(int pid, char *message)
 {
 	int	i;
 
-	i = 0;
-	while (str[i++])
-		send_byte(str[i], pid);
-
+	i = -1;
+	while (message[++i])
+		send_byte(pid, message[i]);
 }
 
 int main(int ac, char **av)
 {
 	int sv_pid;
 	char *message;
+	int	i;
 
 	if (ac != 3)
 	{
 		ft_putstr("AC ERROR\n");
 		exit(0);
 	}
-	sv_pid = ft_atoi(av[1]);
-	message = av[2];
-	send_msg(message, sv_pid);
+		sv_pid = ft_atoi(av[1]);
+		message = av[2];
+		i = 0;
+		send_msg(sv_pid, message);
+		ft_putstr("message clear\n");	
 	return (0);
 }

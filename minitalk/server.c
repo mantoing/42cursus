@@ -29,9 +29,8 @@ void	convert_bin_char(int *arr)
 void	handler(int signal)
 {
 	static int arr[8];
-	static int i;
+	static int i = 0;
 
-	i = 0;
 	if (signal == SIGUSR1)
 		arr[i] = 1;
 	else if (signal == SIGUSR2)
@@ -48,7 +47,8 @@ int main(int ac, char **av)
 {
 	struct sigaction	siga;
 	
-	siga.sa_sigaction = handler;
+	(void)av;
+	siga.sa_handler = handler;
 	siga.sa_flags = 0;
 	prt_pid();
 	if (ac != 1)

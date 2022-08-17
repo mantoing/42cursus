@@ -2,6 +2,7 @@
 # define MINITALK_H
 
 # define ERROR -1
+# define SUCCESS 0
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -13,5 +14,6 @@ void	ft_putnbr_fd(int nb, int fd);
 size_t	ft_strlen(char *str);
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
+int	ft_pow(int num, int power);
 
 #endif
