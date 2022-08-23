@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/23 15:44:37 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/08/23 17:37:44 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	prt_pid(void)
@@ -12,8 +24,8 @@ void	prt_pid(void)
 
 void	convert_bin_char(int *arr)
 {
-	int i;
-	int res;
+	int	i;
+	int	res;
 
 	i = 0;
 	res = 0;
@@ -21,15 +33,15 @@ void	convert_bin_char(int *arr)
 	{
 		if (arr[i] == 1)
 			res += ft_pow(2, (7 - i));
-		i++;	
+		i++;
 	}
 	write(1, &res, 1);
 }
 
 void	handler(int signal)
 {
-	static int arr[8];
-	static int i = 0;
+	static int	arr[8];
+	static int	i = 0;
 
 	if (signal == SIGUSR1)
 		arr[i] = 1;
@@ -43,10 +55,10 @@ void	handler(int signal)
 	}		
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	struct sigaction	siga;
-	
+
 	(void)av;
 	siga.sa_handler = handler;
 	siga.sa_flags = 0;
