@@ -6,11 +6,13 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 15:44:37 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/23 17:37:44 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/26 21:36:01 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+t_info	g_info;
 
 void	prt_pid(void)
 {
@@ -38,11 +40,13 @@ void	convert_bin_char(int *arr)
 	write(1, &res, 1);
 }
 
-void	handler(int signal)
+static void	handler(int signal, siginfo_t *siginfo, void *p)
 {
 	static int	arr[8];
 	static int	i = 0;
 
+	(void)p;
+	g_info.pid = siginfo->si_pid;
 	if (signal == SIGUSR1)
 		arr[i] = 1;
 	else if (signal == SIGUSR2)
@@ -52,7 +56,8 @@ void	handler(int signal)
 	{
 		convert_bin_char(arr);
 		i = 0;
-	}		
+	}
+	g_info.flags = 1;
 }
 
 int	main(int ac, char **av)
@@ -60,8 +65,8 @@ int	main(int ac, char **av)
 	struct sigaction	siga;
 
 	(void)av;
-	siga.sa_handler = handler;
-	siga.sa_flags = 0;
+	siga.sa_sigaction = &handler;
+	siga.sa_flags = SA_SIGINFO;
 	prt_pid();
 	if (ac != 1)
 	{
@@ -74,7 +79,11 @@ int	main(int ac, char **av)
 		ft_putstr("signal reception failure\n");
 	while (1)
 	{
-		pause();
+		if (g_info.flags)
+		{
+			g_info.flags = 0;
+			kill(g_info.pid, SIGUSR1);
+		}
 	}
 	return (0);
 }

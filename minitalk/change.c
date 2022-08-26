@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 15:44:42 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/23 15:44:42 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/08/26 21:36:47 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,16 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		return (-1);
 	}
 	result = 0;
-	while (ft_isdigit(str[i]))
+	while (str[i])
 	{
+		if (ft_isdigit(str[i]) == 0)
+			return (-1);
 		result *= 10;
 		result += str[i] - '0';
 		i++;
 	}
-	if (result < 0)
-		return ((sign + 1) / -2);
 	return (result * sign);
 }
