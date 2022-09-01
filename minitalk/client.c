@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:10:40 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/26 21:45:59 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/01 16:00:35 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ static void	handler(int signal, siginfo_t *siginfo, void *p)
 	sig_del = signal;
 	tmp = p;
 	g_flag = siginfo->si_pid;
+}
+
+void	kill_sigusr(int bit_tmp, int kill_flag, int pid)
+{
+	if (bit_tmp == 1)
+		kill_flag = kill(pid, SIGUSR1);
+	else if (bit_tmp == 0)
+		kill_flag = kill(pid, SIGUSR2);
+	if (kill_flag == -1)
+		exit(1);
 }
 
 void	send_byte(int pid, char *message)
@@ -41,12 +51,7 @@ void	send_byte(int pid, char *message)
 			{
 				g_flag = 0;
 				bit_tmp = *message >> (7 - bit_cnt) & 1;
-				if (bit_tmp == 1)
-					kill_flag = kill(pid, SIGUSR1);
-				else if (bit_tmp == 0)
-					kill_flag = kill(pid, SIGUSR2);
-				if (kill_flag == -1)
-					exit(1);
+				kill_sigusr(bit_tmp, kill_flag, pid);
 				bit_cnt++;
 			}
 		}

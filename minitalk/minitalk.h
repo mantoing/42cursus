@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 15:44:16 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/08/26 19:49:53 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/01 15:51:01 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
-# include <stdio.h>
 
-typedef	struct	s_info
+typedef struct s_info
 {
 	int	pid;
 	int	flags;
