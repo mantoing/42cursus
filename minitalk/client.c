@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:10:40 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/01 16:00:35 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/01 16:28:41 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	send_msg(int pid, char *message)
 	siga.sa_sigaction = &handler;
 	siga.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &siga, NULL);
+	ft_putstr("message clear\n");
 	send_byte(pid, message);
 	exit(0);
 }
@@ -91,6 +92,5 @@ int	main(int ac, char **av)
 	}
 	message = av[2];
 	send_msg(sv_pid, message);
-	ft_putstr("message clear\n");
 	return (0);
 }
