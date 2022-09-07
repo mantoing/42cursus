@@ -1,38 +1,26 @@
 #include "push_swap.h"
 
-void	print_error(char *s)
+void	init_stack(int ac, char **av, t_info *stack)
 {
-	write(2, s, ft_strlen(s));
-	exit(1);
-}
+	int tmp;
 
-void init_stack_a(int ac, char **av, t_stack *a)
-{
-	int i;
-
-	i = ac;
-	while (--i > 0)
-	{
-		a->data = av[i]; //stack make
-		a = a->next;	
+	tmp = ft_atoi(av[--ac]);
+	stack->header = NULL;
+	stack->tailer = NULL;
+	while (ac > 1)
+	{	
+		tmp = ft_atoi(av[--ac]);
+		push_top(stack->a, tmp);
 	}
-
+	stack->b = NULL;
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	int	i;
-	t_stack a;
-	t_stack b;
-	
+	t_info	info;
+
 	if (ac < 2)
-	{
-		print_error("AC ERROR\n");
-		exit(1);
-	}
-	init_stack_a()
-
-
-
-
+		prt_error();
+	init_stack(ac, av, &info);
+	return (0);
 }
