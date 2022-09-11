@@ -1,37 +1,42 @@
 #include "push_swap.h"
 
-void    push_top(t_info *deque, int data)
+int    push_top(t_stack *s, int data)
 {
-    t_stack  *new;
+    t_link  *new;
 
-	new = (t_stack *)malloc(sizeof(t_stack));
-	if (deque->tailer == NULL)
+	new = (t_link *)malloc(sizeof(t_link));
+	if (new == NULL)
+		prt_error();
+	s->size  += 1;
+	if (s->head == NULL)
 	{
-		deque->header = new;
-		deque->tailer = new;
+		s->head = new;
+		s->tail = new;
 		new-> data = data;
 		new->next = NULL;
 		new->prev = NULL;
-		return ;
+		return (TRUE);
 	}
-	deque->header->prev = new;
-	new->next = deque->header;
-	deque->header = new;
+	new->prev = s->tail;
+	s->tail->next= new;
+	s->tail = new;
+	new->next = s->head;
+	s->head->prev = new;
 	new->data = data;
-	new->prev = NULL;
+	return (TRUE);
 }
 
-int	pop_top(t_info *deque)
+void prt_stack(t_stack *s)
 {
-	int ret;
-	t_stack	*cur;
+	t_link *cur;
+	int i;
 
-	ret = 0;
-	cur = NULL;
-	ret = deque->header->data;
-	deque->header->next->prev = NULL;
-	cur = deque->header;
-	deque->header = deque->header->next;
-	free(cur);
-	return (ret);
+	i = 0;
+	cur = s->head;
+	while(i++ < s->size)
+	{
+		printf("%d ", cur->data);
+		cur = cur->next;
+	}
+	printf("\n");
 }

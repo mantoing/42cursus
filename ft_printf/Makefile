@@ -16,7 +16,7 @@ CFLAGS		= -Wall -Wextra -Werror
 AR			= ar rc
 RM			= rm -f
 
-$(NAME)	: $(OBJS)
+$(NAME)	: 
 	$(AR) $(NAME) $(OBJS)
 
 .PHONY	: all
