@@ -6,44 +6,54 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 16:14:00 by wonseoyun         #+#    #+#             */
-/*   Updated: 2022/03/23 14:41:36 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/13 19:49:10 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	isspace(char c)
+static int	check_blank(const char *str, int idx)
 {
-	if (c == '\t' || c == '\f' || c == '\n'
-		|| c == '\r' || c == '\v' || c == ' ')
-		return (1);
-	return (0);
+	while (str[idx] == ' ' || str[idx] == '\f' || str[idx] == '\n'
+		|| str[idx] == '\r' || str[idx] == '\t' || str[idx] == '\v')
+	{
+		idx++;
+	}
+	return (idx);
+}
+
+static int	check_sign(const char *str, int *idx)
+{
+	int	count_minus;
+
+	count_minus = 1;
+	if (str[*idx] == '-' || str[*idx] == '+')
+	{
+		if (str[*idx] == '-')
+			count_minus *= -1;
+		(*idx)++;
+	}
+	if (str[*idx] == '-' || str[*idx] == '+')
+		count_minus = 0;
+	return (count_minus);
 }
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	long	sign;
-	long	result;
+	int	count_minus;
+	int	idx;
+	int	to_int;
 
-	i = 0;
-	while (isspace(str[i]))
-		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	idx = 0;
+	to_int = 0;
+	idx = check_blank(str, idx);
+	count_minus = check_sign(str, &idx);
+	while (str[idx] >= '0' && str[idx] <= '9')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		to_int *= 10;
+		to_int += str[idx] - '0' ;
+		idx++;
 	}
-	result = 0;
-	while (ft_isdigit(str[i]))
-	{
-		result *= 10;
-		result += str[i] - '0';
-		i++;
-	}
-	if (result < 0)
-		return ((sign + 1) / -2);
-	return (result * sign);
+	to_int *= count_minus;
+	return (to_int);
 }
