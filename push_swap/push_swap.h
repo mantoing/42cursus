@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/13 19:50:38 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/14 19:23:08 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ int    push_top(t_stack *deque, int data);
 void prt_stack(t_stack *s);
 int	many_args(char **av, int i, t_stack *a);
 int	one_arg(char *s, t_stack *a);
+long	lengthofarray(char **arr);
+int	pop_top(t_stack *s);
+
+
 
 #endif

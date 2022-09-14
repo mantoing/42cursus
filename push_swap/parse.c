@@ -1,20 +1,17 @@
 #include "push_swap.h"
 #include <string.h>
+
 // int check_duplicate()
 
-// long	lengthofarray(const char *arr)
-// {
-// 	long	size;
-
-// 	size = 0;
-// 	while (*arr)
-// 	{
-// 		size += 1;
-// 		arr += 1;
-// 	}
-
-// 	return (size);
-// }
+long	lengthofarray(char **arr)
+{
+	long	size;
+	
+	size = 0;
+	while (arr[size])
+		size++;
+	return (size);
+}
 
 
 static int	to_int(t_stack *a, char *st)
@@ -38,7 +35,6 @@ static int	to_int(t_stack *a, char *st)
 	}
 	if (st[0] != '0' && ft_atoi(st) == 0)
 		return (FALSE);
-	// printf("%s, %d ", st, ft_atoi(st));
 	push_top(a, ft_atoi(st));
 	return (TRUE);
 }
@@ -47,7 +43,6 @@ int	many_args(char **av, int i, t_stack *a)
 {
 	while (i >= 1)
 	{
-		// printf("cnt\n");
 		if (one_arg(av[i], a))
 			prt_error();
 		i--;
@@ -58,18 +53,15 @@ int	many_args(char **av, int i, t_stack *a)
 int	one_arg(char *s, t_stack *a)
 {
 	char **str;
-	int	i;
-	// int len;
+	int len;
 
 	str = ft_split(s, ' ');
-	// len = lengthofarray(s);
-	// printf("%d = func\n", len);
-	// printf("%lu = sizeof\n", sizeof(str));
-	i = -1;
-	while (str[++i] != NULL)
+	len = lengthofarray(str);
+	while (len >= 1)
 	{
-		if (to_int(a, str[i]) == FALSE)
+		if (to_int(a, str[len -1]) == FALSE)
 		prt_error();
+		len--;
 	}
 	return (0);
 }

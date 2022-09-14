@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+
+
 int    push_top(t_stack *s, int data)
 {
     t_link  *new;
@@ -26,6 +28,22 @@ int    push_top(t_stack *s, int data)
 	return (TRUE);
 }
 
+
+int	pop_top(t_stack *s)
+{
+	int ret;
+	t_link	*cur;
+
+	ret = 0;
+	cur = NULL;
+	ret = s->tail->data;
+	cur = s->tail;
+	s->tail = s->tail->prev;
+	s->tail->next = NULL;
+	s->size--;
+	free(cur);
+	return (ret);
+}
 void prt_stack(t_stack *s)
 {
 	t_link *cur;

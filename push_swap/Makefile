@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -fsanitize=address
+CFLAGS = -fsanitize=address -g3
 SRC = prt_error.c push_swap.c stack.c init.c parse.c \
 		
 OBJ = $(SRC:.c=.o)
