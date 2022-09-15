@@ -7,4 +7,5 @@ void	inint_headtail(t_info *info)
 	info->b->head = NULL;
 	info->b->tail = NULL;
 	info->a->size = 0;
+	info->b->size = 0;
 }

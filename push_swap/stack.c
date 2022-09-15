@@ -14,7 +14,7 @@ int    push_top(t_stack *s, int data)
 	{
 		s->head = new;
 		s->tail = new;
-		new-> data = data;
+		new->item = data;
 		new->next = NULL;
 		new->prev = NULL;
 		return (TRUE);
@@ -22,21 +22,20 @@ int    push_top(t_stack *s, int data)
 	new->prev = s->tail;
 	s->tail->next= new;
 	s->tail = new;
-	new->next = s->head;
-	s->head->prev = new;
-	new->data = data;
+	s->tail->next = NULL;
+	new->item = data;
 	return (TRUE);
 }
 
 
 int	pop_top(t_stack *s)
 {
-	int ret;
+	int	ret;
 	t_link	*cur;
 
 	ret = 0;
 	cur = NULL;
-	ret = s->tail->data;
+	ret = s->tail->item;
 	cur = s->tail;
 	s->tail = s->tail->prev;
 	s->tail->next = NULL;
@@ -51,9 +50,10 @@ void prt_stack(t_stack *s)
 
 	i = 0;
 	cur = s->head;
+	printf("<%d\n", s->size);
 	while(i++ < s->size)
 	{
-		printf("%d ", cur->data);
+		printf("%d ", cur->item);
 		cur = cur->next;
 	}
 	printf("\n");

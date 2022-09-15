@@ -15,5 +15,11 @@ int main(int ac, char **av)
 	inint_headtail(&info);
 	many_args(av, idx, &a);
 	prt_stack(&a);
+	sa(&a);
+	pb(&info);
+	pb(&info);
+	ra(&a);
+	prt_stack(&a);
+	prt_stack(&b);
 	return (0);
 }
