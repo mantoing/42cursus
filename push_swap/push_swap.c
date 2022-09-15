@@ -18,7 +18,14 @@ int main(int ac, char **av)
 	sa(&a);
 	pb(&info);
 	pb(&info);
+	pb(&info);
+	pb(&info);
 	ra(&a);
+	ra(&b);
+	prt_stack(&a);
+	prt_stack(&b);
+	rra(&a);
+	rrb(&b);
 	prt_stack(&a);
 	prt_stack(&b);
 	return (0);

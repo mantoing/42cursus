@@ -11,7 +11,7 @@ void    rra(t_stack *stack_a)
 		tmp = stack_a->head;
 		stack_a->head = stack_a->head->next;
 		stack_a->head->prev = NULL;
-		tmp = stack_a->tail->next;
+		stack_a->tail->next = tmp;
 		tmp->prev = stack_a->tail;
 		stack_a->tail = tmp;
 		write(1, "rra\n", 4);
@@ -29,7 +29,7 @@ void    rrb(t_stack *stack_b)
 		tmp = stack_b->head;
 		stack_b->head = stack_b->head->next;
 		stack_b->head->prev = NULL;
-		tmp = stack_b->tail->next;
+		stack_b->tail->next = tmp;
 		tmp->prev = stack_b->tail;
 		stack_b->tail = tmp;
 		write(1, "rrb\n", 4);
