@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/20 20:06:18 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/09/23 18:12:18 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <string.h>
+
 
 // int check_duplicate()
 
 long	lengthofarray(char **arr)
 {
 	long	size;
-	
+
 	size = 0;
 	while (arr[size])
 		size++;
 	return (size);
 }
-
 
 static int	to_int(t_stack *a, char *st)
 {
@@ -52,15 +64,15 @@ int	many_args(char **av, int i, t_stack *a)
 
 int	one_arg(char *s, t_stack *a)
 {
-	char **str;
-	int len;
+	char	**str;
+	int		len;
 
 	str = ft_split(s, ' ');
 	len = lengthofarray(str);
 	while (len >= 1)
 	{
 		if (to_int(a, str[len -1]) == FALSE)
-		prt_error();
+			prt_error();
 		len--;
 	}
 	return (0);

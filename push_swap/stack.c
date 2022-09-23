@@ -1,15 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/20 20:06:30 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/09/20 20:36:21 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-
-int    push_top(t_stack *s, int data)
+int	push_top(t_stack *s, int data)
 {
-    t_link  *new;
+	t_link	*new;
 
 	new = (t_link *)malloc(sizeof(t_link));
 	if (new == NULL)
 		prt_error();
-	s->size  += 1;
+	s->size += 1;
 	if (s->head == NULL)
 	{
 		s->head = new;
@@ -20,17 +30,16 @@ int    push_top(t_stack *s, int data)
 		return (TRUE);
 	}
 	new->prev = s->tail;
-	s->tail->next= new;
+	s->tail->next = new;
 	s->tail = new;
 	s->tail->next = NULL;
 	new->item = data;
 	return (TRUE);
 }
 
-
 int	pop_top(t_stack *s)
 {
-	int	ret;
+	int		ret;
 	t_link	*cur;
 
 	ret = 0;
@@ -43,15 +52,16 @@ int	pop_top(t_stack *s)
 	free(cur);
 	return (ret);
 }
-void prt_stack(t_stack *s)
+
+void	prt_stack(t_stack *s)
 {
-	t_link *cur;
-	int i;
+	t_link	*cur;
+	int		i;
 
 	i = 0;
 	cur = s->head;
 	printf("<%d\n", s->size);
-	while(i++ < s->size)
+	while (i++ < s->size)
 	{
 		printf("%d ", cur->item);
 		cur = cur->next;
