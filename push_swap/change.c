@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 18:14:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/30 18:40:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/09/30 20:35:59 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void a_to_b(t_info *stack)
         }
         else if (i + chunk < stack->a->tail)
         {
-            if (i < stack->a->size / 2 && i >= 0)
+            if (i < stack->a->size / 2 && i >= 0) //스택의 제일 윗값이 i+chunk보다 크기때문에 수많은 ra를 해야함 따라서 stack의 top이 i+chunk보다 큰 경우일 때 i가 a스택 크기의 절반보다 작다면 rra로 반대로 뒤집어 버리면 불필요한 연산을 줄일 수 있다. 
                 rra(stack);
-            else
+            el0se
                 ra(stack);
         }
             
