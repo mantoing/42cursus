@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 void	arr_swap(int *arr, t_pivot *pv)
 {
@@ -60,23 +59,13 @@ void    get_pivot(t_info *info, t_stack *stack)
 	{
 		arr[i] = cur->item;
 		cur = cur->next;
-		printf("%d", arr[i]);
 		i++;
 	}
-	printf("\n");
-	printf("%d\n", i);
 	arr_qsort(arr, 0, --i);
 	check_duplicate(arr, stack->size);
 	info->pivot_small = arr[stack->size / 3];
 	info->pivot_big = arr[2 * stack->size / 3];
-	// free(arr);
-	i = 0;
-	while (i < stack->size)
-	{
-		printf("%d", arr[i]);
-		i++;
-	}
-	printf("\n");
-	printf("%d\n", info->pivot_small);
-	printf("%d\n", info->pivot_big);
+	printf("pivot 1 : %d\n", info->pivot_small);
+	printf("pivot 2 : %d\n", info->pivot_big);
+	free(arr);
 }

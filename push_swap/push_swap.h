@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/12 12:36:15 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/12 21:36:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ typedef struct s_info
 	int		min;
 	int		pivot_small;
 	int		pivot_big;
-	
+	int		ra_cnt;
+	int		pb_cnt;
+	int		rb_cnt;
+	int		pa_cnt;
 }	t_info;
 
 typedef struct s_pivot
@@ -80,5 +83,6 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_info *stack);
 void    get_pivot(t_info *info, t_stack *stack);
 void check_duplicate(int *arr, int len);
+void    a_to_b(t_info *info, int size);
 
 #endif
