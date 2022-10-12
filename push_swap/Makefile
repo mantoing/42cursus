@@ -2,7 +2,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -fsanitize=address -g3
 SRC = prt_error.c push_swap.c stack.c init.c parse.c \
-		push.c swap.c rotate.c reverse_rotate.c
+		push.c swap.c rotate.c reverse_rotate.c prepare_sort.c
 OBJ = $(SRC:.c=.o)
 RM = /bin/rm -f
 

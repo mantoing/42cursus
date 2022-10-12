@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:18 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/23 18:12:18 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/12 13:02:19 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 #include <string.h>
 
 
-// int check_duplicate()
+void check_duplicate(int *arr, int len)
+{
+	int	i;
+
+	i = 1;
+	if (len < 2)
+		return ;
+	while (i < len)
+	{
+		if (arr[i] == arr[i - 1])
+			prt_error();
+		i++;
+	}
+}
 
 long	lengthofarray(char **arr)
 {
@@ -59,6 +72,8 @@ int	many_args(char **av, int i, t_stack *a)
 			prt_error();
 		i--;
 	}
+	if (a->size == 0)
+		prt_error();
 	return (0);
 }
 
