@@ -35,6 +35,7 @@ void b_to_a(t_info *info, int size)
                 info->ra_cnt++;
             }
         }
+        size--;
 
 
 }

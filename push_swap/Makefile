@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -fsanitize=address -g3
 SRC = prt_error.c push_swap.c stack.c init.c parse.c \
 		push.c swap.c rotate.c reverse_rotate.c prepare_sort.c \
-			sort_a.c
+			sort_a.c hard_sort_a.c
 OBJ = $(SRC:.c=.o)
 RM = /bin/rm -f
 

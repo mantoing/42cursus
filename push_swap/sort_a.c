@@ -13,26 +13,27 @@ int is_sorted(t_stack *stack, int size, int flag)
 
     if (size < 2)
         return (TRUE);
-    tmp = stack->head;    
+    tmp = stack->tail;    
     if (flag == 0)
     {
-        while (tmp->next != 0)
+        while (tmp->prev != 0)
         {
-            if (tmp->item < tmp->next->item)
+            if (tmp->item < tmp->prev->item)
                 return (FALSE);
-            tmp = tmp->next;
+            tmp = tmp->prev;
         }
     }
     else
     {
-        while (size-- > 0)
+        while (tmp->prev != 0)
         {
-            if (tmp->item < tmp->next->item)
+            if (tmp->item < tmp->prev->item)
                 return (FALSE);
-            tmp = tmp->next;    
+            tmp = tmp->prev;
         }
-    } 
-    return (TRUE);   
+    }
+    printf("head = %d\n", tmp->item);
+    return (TRUE);
 }
 
 void    a_to_b(t_info *info, int size)
@@ -43,11 +44,12 @@ void    a_to_b(t_info *info, int size)
     get_pivot(info, info->a); 
     if (is_sorted(info->a, size, 0))
         return ;
-    // if (size == 2)
-    // {
-    //     2개일때 하드소트;
-    //     return ;
-    // }
+    if (size == 2)
+    {
+        printf("test\n");
+        sort_two(info, 0);
+        return ;
+    }
     // else if (size ==3)
     // {
     //     3개일때 하드소트;

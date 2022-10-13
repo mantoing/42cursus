@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/12 21:36:20 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/13 19:30:54 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	rrr(t_info *stack);
 void    get_pivot(t_info *info, t_stack *stack);
 void check_duplicate(int *arr, int len);
 void    a_to_b(t_info *info, int size);
+void	sort_two(t_info *info, int flag);
 
 #endif
