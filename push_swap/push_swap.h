@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/13 19:30:54 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/14 19:29:04 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ typedef struct s_info
 	int		min;
 	int		pivot_small;
 	int		pivot_big;
-	int		ra_cnt;
-	int		pb_cnt;
-	int		rb_cnt;
-	int		pa_cnt;
+
 }	t_info;
 
 typedef struct s_pivot
@@ -58,6 +55,14 @@ typedef struct s_pivot
 	int j;
 	int tmp;
 }	t_pivot;
+
+typedef struct s_cnt
+{
+	int		ra_cnt;
+	int		pb_cnt;
+	int		rb_cnt;
+	int		pa_cnt;
+}	t_cnt;
 
 
 int		check_error_av(int ac, char **av);
@@ -84,6 +89,12 @@ void	rrr(t_info *stack);
 void    get_pivot(t_info *info, t_stack *stack);
 void check_duplicate(int *arr, int len);
 void    a_to_b(t_info *info, int size);
+void b_to_a(t_info *info, int size);
 void	sort_two(t_info *info, int flag);
+void	sort_three(t_info *info, int flag);
+void	a_three_sort(t_info *info);
+void	b_three_sort(t_info *info);
+int is_sorted(t_stack *stack, int size, int flag);
+void    check_rrr(t_info *info, int ra_cnt, int rb_cnt);
 
 #endif

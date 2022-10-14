@@ -1,10 +1,20 @@
 #include "push_swap.h"
 
-void    init_a_cnt(t_info *info)
+void    check_rrr(t_info *info, int ra_cnt, int rb_cnt)
 {
-    info->ra_cnt = 0;
-    info->rb_cnt = 0;
-    info->pb_cnt = 0;
+    while (ra_cnt-- > 0 && rb_cnt-- > 0)
+        rrr(info);
+    while (ra_cnt-- > 0)
+        rra(info->a);
+    while (rb_cnt-- > 0)
+        rrb(info->b);
+}
+
+void    init_a_cnt(t_cnt *count)
+{
+    count->ra_cnt = 0;
+    count->rb_cnt = 0;
+    count->pb_cnt = 0;
 }
 
 int is_sorted(t_stack *stack, int size, int flag)
@@ -32,53 +42,53 @@ int is_sorted(t_stack *stack, int size, int flag)
             tmp = tmp->prev;
         }
     }
-    printf("head = %d\n", tmp->item);
     return (TRUE);
 }
 
 void    a_to_b(t_info *info, int size)
 {
+    t_cnt   count;
     int tmp;
     
-    init_a_cnt(info);
+    init_a_cnt(&count);
+    // printf("ra : %d\n rb : %d\n pb - rb  %d\n", count.ra_cnt, count.rb_cnt, count.pb_cnt - count.rb_cnt);
     get_pivot(info, info->a); 
     if (is_sorted(info->a, size, 0))
         return ;
     if (size == 2)
     {
-        printf("test\n");
         sort_two(info, 0);
         return ;
     }
-    // else if (size ==3)
-    // {
-    //     3개일때 하드소트;
-    //     return ;
-    // }
-    printf("--------------------------------");
+    else if (size == 3)
+    {
+        sort_three(info, 0);
+        return ;
+    }
     while (size > 0)
     {
         tmp = info->a->tail->item;
-        printf("%d\n", tmp);
         if (tmp >= info->pivot_big)
         {
             ra(info->a);
-            info->ra_cnt++;
+            count.ra_cnt++;
         }
         else
             pb(info);
-            info->pb_cnt++;
+            count.pb_cnt++;
             if (tmp >= info->pivot_small)
             {
                 rb(info->b);
-                info->rb_cnt++;
+                count.rb_cnt++;
             }
         size--;        
     }
-    while (info->ra_cnt-- > 0 && info->rb_cnt-- > 0)
-        rrr(info);
-    while (info->ra_cnt-- > 0)
-        rra(info->a);
-    while (info->rb_cnt-- > 0)
-        rrb(info->b);
+    prt_stack(info->a);
+    prt_stack(info->b);
+    check_rrr(info, count.ra_cnt, count.rb_cnt);
+    printf("ra : %d\n rb : %d\n pb - rb  %d\n", count.ra_cnt, count.rb_cnt, count.pb_cnt - count.rb_cnt);
+    a_to_b(info, count.ra_cnt);
+    printf("[%d]\n", count.rb_cnt);
+    b_to_a(info, count.rb_cnt);
+    b_to_a(info, count.pb_cnt - count.rb_cnt);
 }
