@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:18 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/12 13:02:19 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/17 17:40:03 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,13 @@ int	one_arg(char *s, t_stack *a)
 {
 	char	**str;
 	int		len;
+	int		i;
 
 	str = ft_split(s, ' ');
 	len = lengthofarray(str);
 	while (len >= 1)
 	{
-		if (to_int(a, str[len -1]) == FALSE)
+		if (to_int(a, str[len - 1]) == FALSE)
 			prt_error();
 		len--;
 	}

@@ -50,22 +50,25 @@ void    get_pivot(t_info *info, t_stack *stack)
 
     if (stack->size < 4)
         return ;
-	i = 0;
+	i = stack->size - 1;
 	arr = (int *)malloc(stack->size * sizeof(int));
 	if (!arr)
 		prt_error();
-	cur = stack->head;	
-	while (i < stack->size)
+	cur = stack->head;
+	while (i >= 0)
 	{
 		arr[i] = cur->item;
 		cur = cur->next;
-		i++;
+		i--;
 	}
 	arr_qsort(arr, 0, --i);
 	check_duplicate(arr, stack->size);
-	info->pivot_small = arr[stack->size / 3];
-	info->pivot_big = arr[2 * stack->size / 3];
-	printf("pivot 1 : %d\n", info->pivot_small);
-	printf("pivot 2 : %d\n", info->pivot_big);
+	for (int j = 0; j < stack->size; j++)
+	{
+		printf("%d, ", arr[j]);
+	}
+	printf("\n");
+	info->pivot_small = arr[(int)(stack->size / 3)];
+	info->pivot_big = arr[2 * (int)(stack->size / 3)];
 	free(arr);
 }

@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/14 19:29:04 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/17 20:10:37 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,13 @@ int		pop_top(t_stack *s);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_info *node);
+void	check_r(t_info *info, int flag);
 void	ra(t_stack *stack_a);
 void	rb(t_stack *stack_b);
 void	rr(t_info *stack);
 int		pa(t_info *sta);
 int		pb(t_info *sta);
+void	check_rr(t_info *info, int flag);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_info *stack);

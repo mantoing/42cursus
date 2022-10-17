@@ -6,11 +6,30 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:51 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/20 20:25:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/17 19:52:38 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_rr(t_info *info, int flag)
+{
+	if (flag == 0)
+	{
+		rra(info->a);
+		write(1, "rra\n", 4);
+	}
+	else if (flag == 1)
+	{
+		rrb(info->b);
+		write(1, "rrb\n", 4);
+	}
+	else
+	{
+		rrr(info);
+		write(1, "rrr\n", 4);
+	}
+}
 
 void	rra(t_stack *stack_a)
 {
@@ -26,7 +45,6 @@ void	rra(t_stack *stack_a)
 		stack_a->tail->next = tmp;
 		tmp->prev = stack_a->tail;
 		stack_a->tail = tmp;
-		write(1, "rra\n", 4);
 	}
 }
 
@@ -44,7 +62,6 @@ void	rrb(t_stack *stack_b)
 		stack_b->tail->next = tmp;
 		tmp->prev = stack_b->tail;
 		stack_b->tail = tmp;
-		write(1, "rrb\n", 4);
 	}
 }
 
