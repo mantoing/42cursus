@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_a.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/18 20:52:58 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/10/18 21:16:45 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    check_rrr(t_info *info, int ra_cnt, int rb_cnt)
 {
     while (ra_cnt > 0 && rb_cnt > 0)
     {
-        check_rr(info, 2);
+        rrr(info->a, info->b);
         ra_cnt--;
         rb_cnt--;
     }
     while (ra_cnt > 0)
     {
-        check_rr(info, 0);
+        rra(info->a);
         ra_cnt--;
     }
     while (rb_cnt > 0)
     {
-        check_rr(info, 1);
+        rrb(info->b);
         rb_cnt--;
     }
 }
@@ -78,13 +90,13 @@ void    a_to_b(t_info *info, int size)
         return ;
     }
     init_a_cnt(&count);
-    get_pivot(info, info->a);
+    get_pivot(info, info->a, size);
     while (size > 0)
     {
         tmp = info->a->tail->item;
         if (tmp >= info->pivot_big)
         {
-            check_r(info, 0);
+            ra(info->a);
             count.ra_cnt++;
         }
         else
@@ -94,25 +106,18 @@ void    a_to_b(t_info *info, int size)
             tmp = info->b->tail->item;
             if (tmp >= info->pivot_small)
             {
-                check_r(info, 1);
+                rb(info->b);
                 count.rb_cnt++;
             }
         }
         size--;        
     }
+   
     check_rrr(info, count.ra_cnt, count.rb_cnt);
-     prt_stack(info->a);
-    prt_stack(info->b);
-    printf("------%d, %d\n", count.pb_cnt, count.rb_cnt);
-    printf("^^^^^^^^%d, %d\n", info->pivot_big, info->pivot_small);
+    // prt_stack(info->a);
+    // prt_stack(info->b);
+    // printf("\n---------------\n");
     a_to_b(info, count.ra_cnt);
     b_to_a(info, count.rb_cnt);
-    prt_stack(info->a);
-    prt_stack(info->b);
-    printf("------%d, %d\n", count.pb_cnt, count.rb_cnt);
-    printf("^^^^^^^^%d, %d\n", info->pivot_big, info->pivot_small);
-    sleep(1);
     b_to_a(info, count.pb_cnt - count.rb_cnt);
-    prt_stack(info->a);
-    prt_stack(info->b);
 }

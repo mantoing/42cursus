@@ -6,67 +6,49 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:51 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/17 19:52:38 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:34:23 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_rr(t_info *info, int flag)
+void	cal_rr(t_stack *stack)
 {
-	if (flag == 0)
+	t_link	*tmp;
+
+	tmp = stack->head;
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	stack->tail->next = tmp;
+	tmp->prev = stack->tail;
+	stack->tail = tmp;
+}
+
+void	rra(t_stack *stack)
+{
+	if (stack->size == 2)
+		sa(stack);
+	else if (stack->size > 2)
 	{
-		rra(info->a);
+		cal_rr(stack);
 		write(1, "rra\n", 4);
 	}
-	else if (flag == 1)
+}
+
+void	rrb(t_stack *stack)
+{
+	if (stack->size == 2)
+		sb(stack);
+	else if (stack->size > 2)
 	{
-		rrb(info->b);
+		cal_rr(stack);
 		write(1, "rrb\n", 4);
 	}
-	else
-	{
-		rrr(info);
+}
+
+void	rrr(t_stack *stack_a, t_stack *stack_b)
+{
+		cal_rr(stack_a);
+		cal_rr(stack_b);
 		write(1, "rrr\n", 4);
-	}
-}
-
-void	rra(t_stack *stack_a)
-{
-	t_link	*tmp;
-
-	if (stack_a->size == 2)
-		sa(stack_a);
-	else if (stack_a->size > 2)
-	{
-		tmp = stack_a->head;
-		stack_a->head = stack_a->head->next;
-		stack_a->head->prev = NULL;
-		stack_a->tail->next = tmp;
-		tmp->prev = stack_a->tail;
-		stack_a->tail = tmp;
-	}
-}
-
-void	rrb(t_stack *stack_b)
-{
-	t_link	*tmp;
-
-	if (stack_b->size == 2)
-		sa(stack_b);
-	else if (stack_b->size > 2)
-	{
-		tmp = stack_b->head;
-		stack_b->head = stack_b->head->next;
-		stack_b->head->prev = NULL;
-		stack_b->tail->next = tmp;
-		tmp->prev = stack_b->tail;
-		stack_b->tail = tmp;
-	}
-}
-
-void	rrr(t_info *stack)
-{
-	rra(stack->a);
-	rrb(stack->b);
 }

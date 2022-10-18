@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:58 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/20 20:38:46 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:15:25 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ void	sb(t_stack *b)
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_info *node)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(node->a);
-	sb(node->b);
+	swap(stack_a);
+	swap(stack_b);
+	write(1, "ss\n", 3);
 }

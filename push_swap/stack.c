@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/17 20:48:27 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:04:45 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	push_top(t_stack *s, int data)
 
 	new = (t_link *)malloc(sizeof(t_link));
 	if (new == NULL)
-		prt_error();
+		prt_error(0);
 	s->size += 1;
 	if (s->head == NULL)
 	{

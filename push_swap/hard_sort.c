@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hard_sort_a.c                                      :+:      :+:    :+:   */
+/*   hard_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:48:31 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/17 20:10:13 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:52:36 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ void	a_three_sort(t_info *info)
 	}
 	else if (b < a && b < c)
 	{
-		check_r(info, 0);
+		ra(info->a);
 		pb(info);
-		check_rr(info, 0);
+		rra(info->a);
 		sort_two(info, 0);
 		pa(info);
 	}
 	else if (c < a && c < b)
 	{
-		check_r(info, 0);
-		check_r(info, 0);
+		ra(info->a);
+		ra(info->a);
 		pb(info);
-		check_rr(info, 0);
-		check_rr(info, 0);
+		rra(info->a);
+		rra(info->a);
 		sort_two(info, 0);
 		pa(info);
 	}
@@ -71,18 +71,18 @@ void	b_three_sort(t_info *info)
 	}
 	else if (b > a && b > c)
 	{
-		check_r(info, 1);
+		rb(info->b);
 		pa(info);
-		check_rr(info, 1);
+		rrb(info->b);
 		sort_two(info, 1);
 	}
 	else if (c > a && c > b)
 	{
-		check_r(info, 1);
-		check_r(info, 1);
+		rb(info->b);
+		rb(info->b);
 		pa(info);
-		check_rr(info, 1);
-		check_rr(info, 1);
+		rrb(info->b);
+		rrb(info->b);
 		sort_two(info, 1);
 	}
 }

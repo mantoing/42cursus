@@ -42,7 +42,7 @@ void	arr_qsort(int *arr, int start, int end)
 	arr_qsort(arr, pv.j + 1, end);
 }
 
-void    get_pivot(t_info *info, t_stack *stack)
+void    get_pivot(t_info *info, t_stack *stack, int ssize)
 {
     int *arr;
     int i;
@@ -50,25 +50,19 @@ void    get_pivot(t_info *info, t_stack *stack)
 
     if (stack->size < 4)
         return ;
-	i = stack->size - 1;
-	arr = (int *)malloc(stack->size * sizeof(int));
+	i = 0;
+	arr = (int *)malloc(ssize * sizeof(int));
 	if (!arr)
-		prt_error();
-	cur = stack->head;
-	while (i >= 0)
+		prt_error(0);
+	cur = stack->tail;
+	while (i < ssize)
 	{
 		arr[i] = cur->item;
-		cur = cur->next;
-		i--;
+		cur = cur->prev;
+		i++;
 	}
 	arr_qsort(arr, 0, --i);
-	check_duplicate(arr, stack->size);
-	for (int j = 0; j < stack->size; j++)
-	{
-		printf("%d, ", arr[j]);
-	}
-	printf("\n");
-	info->pivot_small = arr[(int)(stack->size / 3)];
-	info->pivot_big = arr[2 * (int)(stack->size / 3)];
+	info->pivot_small = arr[(int)(ssize / 3)];
+	info->pivot_big = arr[2 * (int)(ssize / 3)];
 	free(arr);
 }

@@ -6,14 +6,16 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:39 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/09/20 20:14:52 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/18 23:03:10 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	prt_error(void)
+void	prt_error(int ac)
 {
+	if (ac == 1)
+		exit(1);
 	write(1, "ERROR\n", 6);
 	exit(1);
 }

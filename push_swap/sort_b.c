@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_b.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/18 20:53:05 by jaeywon           #+#    #+#             */
+/*   Updated: 2022/10/18 20:53:07 by jaeywon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    init_b_cnt(t_cnt *count)
@@ -42,13 +54,13 @@ void b_to_a(t_info *info, int size)
         return ;
     }
     init_b_cnt(&count);
-    get_pivot(info, info->b);
+    get_pivot(info, info->b, size);
     while (size > 0)
     {
         tmp = info->b->tail->item;
         if (tmp < info->pivot_small)
         {
-            check_r(info, 1);
+            rb(info->b);
             count.rb_cnt++;
         }
         else
@@ -58,21 +70,14 @@ void b_to_a(t_info *info, int size)
             tmp = info->a->tail->item;
             if (tmp < info->pivot_big)
             {
-                check_r(info, 0);
+                ra(info->a);
                 count.ra_cnt++;
             }
         }
         size--;
     }
-    prt_stack(info->a);
-    prt_stack(info->b);
-    printf("=====%d, %d\n", count.pa_cnt, count.ra_cnt);
-    printf("**********%d, %d\n", info->pivot_big, info->pivot_small);
-    sleep(1);
 	a_to_b(info, count.pa_cnt - count.ra_cnt);
     check_rrr(info, count.ra_cnt, count.rb_cnt);
 	a_to_b(info, count.ra_cnt);
 	b_to_a(info, count.rb_cnt);
-    prt_stack(info->a);
-    prt_stack(info->b);
 }
