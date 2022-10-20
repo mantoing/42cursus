@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:45:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 20:49:29 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 15:42:25 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list	*ft_lstlast(t_list *list);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *list);
-long long	ft_atoi(const char *str);
+int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int c);

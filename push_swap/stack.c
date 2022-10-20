@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 23:04:45 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:01:41 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	pop_top(t_stack *s)
 {
 	int		ret;
 	t_link	*cur;
-	
+
 	ret = 0;
 	cur = NULL;
 	ret = s->tail->item;
@@ -64,7 +64,7 @@ void	prt_stack(t_stack *s)
 {
 	t_link	*cur;
 	int		i;
-	
+
 	i = 0;
 	cur = s->head;
 	printf("<<<<<<<<<<%d\n", s->size);
@@ -73,4 +73,19 @@ void	prt_stack(t_stack *s)
 		printf("%d ", cur->item);
 		cur = cur->next;
 	}
+}
+
+int	x(t_stack *stack, int prev_cnt)
+{
+	int		ret;
+	t_link	*tmp;
+
+	tmp = stack->tail;
+	while (prev_cnt > 0)
+	{
+		tmp = tmp->prev;
+		prev_cnt--;
+	}
+	ret = tmp->item;
+	return (ret);
 }

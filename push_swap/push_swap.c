@@ -6,17 +6,17 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:43 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 23:08:32 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:45:02 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    first_put_arr(t_stack *stack, int ssize)
+void	first_put_arr(t_stack *stack, int ssize)
 {
-    int *arr;
-    int i;
-	t_link *cur;
+	int		*arr;
+	int		i;
+	t_link	*cur;
 
 	i = 0;
 	arr = (int *)malloc(ssize * sizeof(int));

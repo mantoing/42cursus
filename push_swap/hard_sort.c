@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:48:31 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 20:52:36 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 15:52:11 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,18 @@ void	sort_three(t_info *info, int flag)
 	if (flag == 0)
 		a_three_sort(info);
 	else
-		b_three_sort(info);	
+		b_three_sort(info);
 }
 
 void	a_three_sort(t_info *info)
 {
-	int a;
-	int b;
-	int c;
-
-	a = info->a->tail->item;
-	b = info->a->tail->prev->item;
-	c = info->a->tail->prev->prev->item;
-	if (a < b && a < c)
+	if (x(info->a, 0) < x(info->a, 1) && x(info->a, 0) < x(info->a, 2))
 	{
 		pb(info);
 		sort_two(info, 0);
 		pa(info);
 	}
-	else if (b < a && b < c)
+	else if (x(info->a, 1) < x(info->a, 0) && x(info->a, 1) < x(info->a, 2))
 	{
 		ra(info->a);
 		pb(info);
@@ -43,7 +36,7 @@ void	a_three_sort(t_info *info)
 		sort_two(info, 0);
 		pa(info);
 	}
-	else if (c < a && c < b)
+	else if (x(info->a, 2) < x(info->a, 0) && x(info->a, 2) < x(info->a, 1))
 	{
 		ra(info->a);
 		ra(info->a);
@@ -57,26 +50,19 @@ void	a_three_sort(t_info *info)
 
 void	b_three_sort(t_info *info)
 {
-	int a;
-	int b;
-	int c;
-
-	a = info->b->tail->item;
-	b = info->b->tail->prev->item;
-	c = info->b->tail->prev->prev->item;
-	if (a > b && a > c)
+	if (x(info->b, 0) > x(info->b, 1) && x(info->b, 0) > x(info->b, 2))
 	{
 		pa(info);
 		sort_two(info, 1);
 	}
-	else if (b > a && b > c)
+	else if (x(info->b, 1) > x(info->b, 0) && x(info->b, 1) > x(info->b, 2))
 	{
 		rb(info->b);
 		pa(info);
 		rrb(info->b);
 		sort_two(info, 1);
 	}
-	else if (c > a && c > b)
+	else if (x(info->b, 2) > x(info->b, 0) && x(info->b, 2) > x(info->b, 1))
 	{
 		rb(info->b);
 		rb(info->b);
@@ -89,8 +75,8 @@ void	b_three_sort(t_info *info)
 
 void	sort_two(t_info *info, int flag)
 {
-	t_link *a_tmp;
-	t_link *b_tmp;
+	t_link	*a_tmp;
+	t_link	*b_tmp;
 
 	a_tmp = info->a->tail;
 	b_tmp = info->b->tail;

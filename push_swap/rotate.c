@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:26 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 20:28:58 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:00:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	cal_r(t_stack *stack)
 {
 	t_link	*tmp;
-	
+
 	tmp = stack->tail;
 	stack->tail = stack->tail->prev;
 	stack->tail->next = NULL;

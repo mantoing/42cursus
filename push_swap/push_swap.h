@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 23:03:27 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:40:05 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,16 @@ typedef struct s_info
 	int		min;
 	int		pivot_small;
 	int		pivot_big;
+	int		num;
 
 }	t_info;
 
 typedef struct s_pivot
 {
 	int	pivot;
-	int i;
-	int j;
-	int tmp;
+	int	i;
+	int	j;
+	int	tmp;
 }	t_pivot;
 
 typedef struct s_cnt
@@ -64,7 +65,6 @@ typedef struct s_cnt
 	int		rb_cnt;
 	int		pa_cnt;
 }	t_cnt;
-
 
 int		check_error_av(int ac, char **av);
 void	inint_headtail(t_info *info);
@@ -87,20 +87,27 @@ int		pb(t_info *sta);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
-void    get_pivot(t_info *info, t_stack *stack, int ssize);
-void check_duplicate(int *arr, int len);
-void    a_to_b(t_info *info, int size);
-void b_to_a(t_info *info, int size);
+void	get_pivot(t_info *info, t_stack *stack, int ssize);
+void	check_duplicate(int *arr, int len);
+void	a_to_b(t_info *info, int size);
+void	b_to_a(t_info *info, int size);
 void	sort_two(t_info *info, int flag);
 void	sort_three(t_info *info, int flag);
 void	a_three_sort(t_info *info);
 void	b_three_sort(t_info *info);
-int is_sorted(t_stack *stack, int size, int flag);
-void    check_rrr(t_info *info, int ra_cnt, int rb_cnt);
-void    first_put_arr(t_stack *stack, int ssize);
+int		is_sorted(t_stack *stack, int size, int flag);
+void	check_rrr(t_info *info, int ra_cnt, int rb_cnt);
+void	first_put_arr(t_stack *stack, int ssize);
 void	arr_qsort(int *arr, int start, int end);
-int	err_check(char **av);
-void    only_five_sort(t_info *info);
-void    only_three_sort(t_stack *stack);
+int		err_check(char **av);
+void	only_five_sort(t_info *info);
+void	only_three_sort(t_stack *stack);
+void	init_a_cnt(t_cnt *count);
+void	init_b_cnt(t_cnt *count);
+int		x(t_stack *stack, int prev_cnt);
+void	do_b_to_a(t_info *info, int size);
+void	do_a_to_b(t_info *info, int size);
+void	split_anum(t_info *info, t_cnt *count);
+void	zerosplit_anum(t_info *info, t_cnt *count);
 
 #endif

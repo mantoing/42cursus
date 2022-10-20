@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:51 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/18 20:34:23 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 15:59:15 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	cal_rr(t_stack *stack)
 
 void	rra(t_stack *stack)
 {
+	if (stack->size == 1)
+		return ;
 	if (stack->size == 2)
 		sa(stack);
 	else if (stack->size > 2)
@@ -37,6 +39,8 @@ void	rra(t_stack *stack)
 
 void	rrb(t_stack *stack)
 {
+	if (stack->size == 1)
+		return ;
 	if (stack->size == 2)
 		sb(stack);
 	else if (stack->size > 2)
@@ -48,7 +52,9 @@ void	rrb(t_stack *stack)
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-		cal_rr(stack_a);
-		cal_rr(stack_b);
-		write(1, "rrr\n", 4);
+	if (stack_a->size < 2 || stack_b->size < 2)
+		return ;
+	cal_rr(stack_a);
+	cal_rr(stack_b);
+	write(1, "rrr\n", 4);
 }
