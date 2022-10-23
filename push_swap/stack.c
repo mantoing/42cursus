@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:06:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/20 16:01:41 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:36:55 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,6 @@ int	pop_top(t_stack *s)
 	s->size--;
 	free(cur);
 	return (ret);
-}
-
-void	prt_stack(t_stack *s)
-{
-	t_link	*cur;
-	int		i;
-
-	i = 0;
-	cur = s->head;
-	printf("<<<<<<<<<<%d\n", s->size);
-	while (i++ < s->size)
-	{
-		printf("%d ", cur->item);
-		cur = cur->next;
-	}
 }
 
 int	x(t_stack *stack, int prev_cnt)

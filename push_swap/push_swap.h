@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:59:22 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/20 16:40:05 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:37:01 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # define FALSE 0
 
 # include <unistd.h>
-# include <stdio.h>
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <limits.h>
@@ -71,7 +70,6 @@ void	inint_headtail(t_info *info);
 void	init_stack(int ac, char **av, t_info *info);
 void	prt_error(int ac);
 int		push_top(t_stack *deque, int data);
-void	prt_stack(t_stack *s);
 int		many_args(char **av, int i, t_stack *a);
 int		one_arg(char *s, t_stack *a);
 long	lengthofarray(char **arr);
