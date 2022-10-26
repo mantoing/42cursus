@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:47 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/23 20:57:58 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/26 16:01:55 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@
 			return ((sign + 1) / -2);
 	}
 	return ((long long)(res * sign));
+}
+
+void	ft_usleep(long long time)
+{
+	long long	start;
+
+	start = ft_get_time();
+	while (1)
+	{
+		if (ft_get_time() - start >= time)
+			break ;
+		usleep(100);	
+	}
 }
