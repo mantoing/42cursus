@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:30:18 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/26 16:20:51 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/27 20:50:32 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main(int ac, char **av)
 	philo = init_philo(&info);
 	if (!philo)
 		return (prt_error(2));
-	if (init_mutex(&info, philo))
+	if (init_mutex(&info, philo) != 0)
 		return (prt_error(3));
-		pthread_mutex_lock(&philo->info->print);
-	//make_philo(&info, philo);
+	if (make_philo(&info, philo) != 0)
+		return (prt_error(4));
 	return (0);
 }

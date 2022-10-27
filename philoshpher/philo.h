@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:27:17 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/26 16:21:25 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/27 21:57:40 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_info
 	int	time_d;
 	int	time_e;
 	int	time_s;
-	int	start_time;
 	int	eatingnum;
 	int finished;
 	pthread_mutex_t	*fork;
@@ -36,12 +35,13 @@ typedef struct s_philo
 {
 	pthread_t	p_thread;
 	t_info		*info;
+	int			eat_cnt;
 	int			pos;
 	long long	last_eat;
 	int			end_flag;
 	pthread_mutex_t *l_fork;
 	pthread_mutex_t *r_fork;
-	
+	int	start_time;
 }	t_philo;
 
 
@@ -53,7 +53,7 @@ t_philo	*init_philo(t_info *info);
 int	init_mutex(t_info *info, t_philo *phil);
 void	action_philo(t_philo *philo);
 void	sleeping(t_philo *philo);
-int	prt_phillo(int pos, t_philo *phil, char *str);
+void	prt_philo(int pos, t_philo *phil, char *str);
 void	ft_usleep(long long time);
 int make_philo(t_info *info, t_philo *philo);
 void	*ft_thread(t_philo *philo);

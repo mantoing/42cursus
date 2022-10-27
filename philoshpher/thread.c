@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 13:57:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/26 16:13:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/27 22:03:49 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_thread(t_philo *philo)
 {
 	if ((philo->pos % 2))
-		ft_usleep(philo->info->time_e / 2);
+		ft_usleep(1000);
 	while(1)
 	{
 		pthread_mutex_lock(&philo->info->print);
@@ -24,6 +24,20 @@ void	*ft_thread(t_philo *philo)
 		pthread_mutex_unlock(&philo->info->print);
 		action_philo(philo);
 	}
+	pthread_mutex_unlock(&philo->info->print);
+	return (0);
+}
+
+int	solo_philo(t_info *info, t_philo *phil)
+{
+	if (info->philo_num == 1)
+	{
+		pthread_mutex_lock(phil->l_fork);
+		prt_philo(phil->pos, phil, "has taken a fork");
+		ft_usleep(info->time_d);
+		prt_philo(phil[0].pos, phil, "died");
+		return (1);
+	}
 	return (0);
 }
 
@@ -31,12 +45,14 @@ int make_philo(t_info *info, t_philo *philo)
 {
 	int	i;
 
-// 	if (혼자일 경우)
-// 		return (0);
-	i = 0;
-	while (i++ < info->philo_num)
-	{
+	if (solo_philo(info, philo))
+		return (0);
+	i = -1;
+	while (++i < info->philo_num)
+	{	
+		// printf("i = %d\n", i);
 		philo[i].last_eat = ft_get_time();
+		// printf("time = %lld\n", philo[i].last_eat);
 		if (pthread_create(&(philo[i].p_thread), NULL, (void *)ft_thread, &(philo[i])))
 			return (1);
 	}
