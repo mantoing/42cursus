@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 20:14:02 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/27 22:02:34 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/28 20:56:11 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 void	prt_philo(int pos, t_philo *phil, char *str)
 {
 	long long	time;
+	long long	pass;
 	
 	pthread_mutex_lock(&(phil->info->print));
 	time = ft_get_time();
+	pass = ft_get_passed_time(phil->info->start_time);
 	if (!phil->end_flag || !phil->info->finished)
-		printf("%lld %d %s \n", time - phil->start_time, pos + 1, str);
+		printf("%lld %d %s\n", pass, pos + 1, str);
 	pthread_mutex_unlock(&phil->info->print);
 }
 
@@ -34,6 +36,7 @@ void	eating(t_philo *philo)
 	philo->last_eat = ft_get_time();
 	pthread_mutex_unlock(&philo->info->print);
 	philo->eat_cnt++;
+	ft_usleep(philo->info->time_e);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_lock(&philo->info->print);

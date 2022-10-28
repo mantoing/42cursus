@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:17 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/27 21:57:52 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/28 20:49:49 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	init_info(int ac, char **av, t_info *info)
 	info->time_e = ft_atoi(av[3]);
 	info->time_s = ft_atoi(av[4]);
 	info->finished = 0;
+	info->eatingnum = -1;
+	info->start_time = ft_get_time();
 	if (!info->philo_num || !info->time_d || !info->time_e || !info->time_s)
 		return (1);
 	if (ac == 6)
@@ -70,8 +72,6 @@ t_philo	*init_philo(t_info *info)
 		phil[i].info = info;
 		phil[i].end_flag = 0;
 		phil[i].pos = i;
-		phil[i].start_time = ft_get_time();
-		phil[i].last_eat = 0;
 		phil[i].eat_cnt = 0;
 	}
 	return (phil);

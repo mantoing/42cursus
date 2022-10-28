@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:30:18 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/27 20:50:32 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/28 20:52:24 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int main(int ac, char **av)
 {
 	t_philo *philo;
 	t_info info;
-	
-	printf("%d\n", ac);
+
 	if (init_info(ac, av, &info) != 0)
 		return (prt_error(1));
 	philo = init_philo(&info);

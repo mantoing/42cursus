@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 13:57:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/27 22:03:49 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/28 17:30:35 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ int make_philo(t_info *info, t_philo *philo)
 	i = -1;
 	while (++i < info->philo_num)
 	{	
-		// printf("i = %d\n", i);
 		philo[i].last_eat = ft_get_time();
-		// printf("time = %lld\n", philo[i].last_eat);
 		if (pthread_create(&(philo[i].p_thread), NULL, (void *)ft_thread, &(philo[i])))
 			return (1);
 	}

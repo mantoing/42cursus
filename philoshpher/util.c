@@ -6,19 +6,24 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:47 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/26 16:01:55 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/10/28 20:51:05 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #include "philo.h"
 
- long long	ft_get_time(void)
+ time_t	ft_get_time(void)
  {
 	 struct timeval	time;
 	 
 	 gettimeofday(&time, NULL);
 	 return (time.tv_sec * 1000 + time.tv_usec / 1000);
  }
+
+time_t	ft_get_passed_time(time_t start_time)
+{
+	return (ft_get_time() - start_time);
+}
 
  long long	ft_atoi(const char *str)
 {
