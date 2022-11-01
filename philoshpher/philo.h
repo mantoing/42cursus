@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:27:17 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/28 20:50:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/11/01 17:50:40 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ void	ft_usleep(long long time);
 int make_philo(t_info *info, t_philo *philo);
 void	*ft_thread(t_philo *philo);
 time_t	ft_get_passed_time(time_t start_time);
+void	repeat_join(t_philo *philo, t_info info);
 
 #endif

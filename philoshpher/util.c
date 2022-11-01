@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:47 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/28 20:51:05 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/11/01 18:18:50 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,13 @@ void	ft_usleep(long long time)
 			break ;
 		usleep(100);	
 	}
+}
+
+void	repeat_join(t_philo *philo, t_info info)
+{
+	int i;
+
+	i = -1;
+	while (++i < info.philo_num)
+		pthread_join(philo[i].p_thread, NULL);
 }
