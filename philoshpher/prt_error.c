@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:43:54 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/27 20:50:34 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:55:23 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	prt_error(int code)
 	else if (code == 3)
 		write(1, "MUTEX ERROR\n", 12);
 	else if (code == 4)
-		write(1, "MAKE PHILO ERROR\n", 18);	
+		write(1, "MAKE PHILO ERROR\n", 18);
 	return (code);
 }

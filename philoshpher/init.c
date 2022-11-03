@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:17 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/10/28 20:49:49 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/11/03 18:51:22 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	init_info(int ac, char **av, t_info *info)
 {
 	if ((ac != 5 && ac != 6) || ac < 2)
 		return (1);
+	if (ft_atoi(av[1]) > 2147483648 || ft_atoi(av[1]) < 0)
+		return (1);
 	info->philo_num = ft_atoi(av[1]);
 	info->time_d = ft_atoi(av[2]);
 	info->time_e = ft_atoi(av[3]);
@@ -23,10 +25,13 @@ int	init_info(int ac, char **av, t_info *info)
 	info->finished = 0;
 	info->eatingnum = -1;
 	info->start_time = ft_get_time();
-	if (!info->philo_num || !info->time_d || !info->time_e || !info->time_s)
+	if (!info->philo_num || !info->time_d || !info->time_e || !info->time_s \
+			|| info->time_d < 0 || info->time_e < 0 || info->time_s < 0)
 		return (1);
 	if (ac == 6)
 	{
+		if (ft_atoi(av[5]) > 2147483648 || ft_atoi(av[5]) < 0)
+			return (1);
 		info->eatingnum = ft_atoi(av[5]);
 		if (!info->eatingnum)
 			return (1);
@@ -36,7 +41,7 @@ int	init_info(int ac, char **av, t_info *info)
 
 int	init_mutex(t_info *info, t_philo *phil)
 {
-	int i;
+	int	i;
 
 	if (pthread_mutex_init(&(info->print), NULL))
 		return (1);
@@ -46,7 +51,7 @@ int	init_mutex(t_info *info, t_philo *phil)
 		return (1);
 	while (++i < info->philo_num)
 	{
-		if(pthread_mutex_init(&(info->fork[i]), NULL))
+		if (pthread_mutex_init(&(info->fork[i]), NULL))
 			return (1);
 	}
 	i = -1;
@@ -60,7 +65,7 @@ int	init_mutex(t_info *info, t_philo *phil)
 
 t_philo	*init_philo(t_info *info)
 {
-	t_philo *phil;
+	t_philo	*phil;
 	int		i;
 
 	i = -1;

@@ -6,26 +6,26 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 19:50:47 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/11/01 18:18:50 by jaeywon          ###   ########.fr       */
+/*   Updated: 2022/11/03 19:51:31 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "philo.h"
+#include "philo.h"
 
- time_t	ft_get_time(void)
- {
-	 struct timeval	time;
-	 
-	 gettimeofday(&time, NULL);
-	 return (time.tv_sec * 1000 + time.tv_usec / 1000);
- }
+time_t	ft_get_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
 
 time_t	ft_get_passed_time(time_t start_time)
 {
 	return (ft_get_time() - start_time);
 }
 
- long long	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int			i;
 	long long	sign;
@@ -61,13 +61,13 @@ void	ft_usleep(long long time)
 	{
 		if (ft_get_time() - start >= time)
 			break ;
-		usleep(100);	
+		usleep(128);
 	}
 }
 
 void	repeat_join(t_philo *philo, t_info info)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < info.philo_num)
