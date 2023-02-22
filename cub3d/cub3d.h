@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:05:16 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/20 19:38:25 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:11:22 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_map
 	char	**map;
 	int		count;
 	int		check;
+	int		f_color;
+	int		c_color;
 	char	*dir_no;
 	char	*dir_so;
 	char	*dir_we;

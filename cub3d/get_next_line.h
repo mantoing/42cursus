@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:51:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/20 17:12:51 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/22 00:11:17 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@
 # include <stdlib.h>
 # include <limits.h>
 
-int		check_newline(char *line);
-char	*get_newline(char **line, int rsize);
 int		get_next_line(int fd, char **line);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *str);
 int		ft_error(char **st);
 int		chk_enter(char *st);
 char	*ft_gnl_strjoin(char *s1, char *s2);

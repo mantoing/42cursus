@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:08:11 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/20 16:38:41 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:47:07 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2 || (check_map_name(av[1]) == 1))
 		print_err("ac error\n");
-	//ft_init(); 구조체정보 초기화 처리해주는 부분
 	ft_parse(av[1], &info);
+	//그래픽관련 함수들이 써져 있어야 하는 부분
 }
