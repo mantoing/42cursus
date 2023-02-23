@@ -6,11 +6,11 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:08:53 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/20 17:09:13 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/23 18:51:05 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_gnl_strjoin(char *s1, char *s2)
 {

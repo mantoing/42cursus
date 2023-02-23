@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:17:21 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/22 00:14:35 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/23 19:18:26 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*check_texture(char *line)
 	ret = NULL;
 	fd = 0;
 	line += 2;
-	while (ft_isspace(line))
+	while (ft_isspace(*line))
 		line++;
 	fd = open(line, O_RDONLY);
 	if (fd < 0)

@@ -6,11 +6,11 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:51:13 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/22 00:11:26 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/23 18:50:57 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int	ft_d(char *content, char **st)
 {

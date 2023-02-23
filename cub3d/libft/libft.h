@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:45:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2022/03/30 15:49:50 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/23 18:59:30 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,22 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
+# endif
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
 void	ft_lstadd_back(t_list **list, t_list *new);
 void	ft_lstadd_front(t_list **list, t_list *new);
 void	ft_lstclear(t_list **list, void (*del)(void *));
@@ -46,7 +56,7 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize);
 size_t	ft_strlcpy(char *dest, const char *stc, size_t destsize);
-int		ft_strlen(char *str);
+size_t	ft_strlen(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
@@ -63,5 +73,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		get_next_line(int fd, char **line);
+int		ft_error(char **st);
+int		chk_enter(char *st);
+char	*ft_gnl_strjoin(char *s1, char *s2);
 
 #endif
