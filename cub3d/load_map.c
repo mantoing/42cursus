@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 20:52:07 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 22:15:30 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/27 18:23:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	make_arr_and_change_space(int fd, t_info *info, char **arr)
 			print_err("fail read map\n");
 		tmp = (char *)malloc(sizeof(char) * (info->map.w + 1));
 		if (!tmp)
-			print_err("malloc error\n");
+			print_err("malloc error: make space\n");
 		ft_memset(tmp, ' ', info->map.w);
 		tmp[info->map.w] = '\0';
 		ft_strcpy(tmp, line);
@@ -89,9 +89,9 @@ void	load_map(char *name, t_info *info)
 	if (info->map.start == 0)
 		print_err("cannot found map\n");
 	info->map.h = info->map.count - info->map.start;
-	tmp = (char **)malloc(sizeof(char *) * (info->map.h + 1));
+	tmp = (char **)malloc(sizeof(char *) * (info->map.h + 2));
 	if (!tmp)
-		print_err("malloc error\n");
+		print_err("malloc error : load_map.c\n");
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
 		print_err("cannot load map\n");

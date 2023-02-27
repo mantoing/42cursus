@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:05:16 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 22:12:49 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/24 17:36:47 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	print_err(char *str);
 int		ft_isspace(char c);
 int		ft_parse(char *name, t_info *info);
 int		check_dir(t_map *map, char *line, char c);
-void	check_color(t_map *map, char **line);
-void	init_map(t_map map);
+void	check_color(t_map *map, char *line, char c);
+void	init_map(t_map *map);
 int		check_valid_map(char *line);
 size_t	ft_strcpy(char *dst, const char *src);
 void	load_map(char *name, t_info *info);
 void	check_wall(char **map, int w, int h);
-
+void	init_player(t_player *player);
 #endif

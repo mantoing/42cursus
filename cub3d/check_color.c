@@ -6,21 +6,21 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:18:28 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/22 00:11:06 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/27 04:31:10 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_str(char **str)
-{
-	int	i;
+// static void	free_str(char **str)
+// {
+// 	int	i;
 
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str);
-}
+// 	i = -1;
+// 	while (str[++i])
+// 		free(str[i]);
+// 	free(str);
+// }
 
 static int	change_str_to_int(char *str)
 {
@@ -51,29 +51,40 @@ static int	color_parse(char *line)
 
 	str = ft_split(line, ',');
 	if (!str)
-		print_err("malloc error\n" );
+		print_err("split error\n" );
 	if (str[0] == NULL || str[1] == NULL || str[2] == NULL)
 		print_err("COLOR imformations split dailed\n");
+	color = 0;
 	str[2][ft_strlen(str[2]) - 1] = '\0';
 	rgb_r = change_str_to_int(str[0]);
 	rgb_g = change_str_to_int(str[1]);
 	rgb_b = change_str_to_int(str[2]);
+	printf("r = %d\n", rgb_r);
+	printf("g = %d\n", rgb_g);
+	printf("b = %d\n", rgb_b);
 	color = (rgb_r << 16) + (rgb_g << 8) + rgb_b;
-	free_str(str);
+	printf("color = %d\n", color);
+	// free_str(str);
 	return (color);
 }
 
-void	check_color(t_map *map, char **line)
+void	check_color(t_map *map, char *line, char c)
 {
 	line += 2;
-	while ((*line)[0] != '\n')
+	while (ft_isspace(*line))
+		line++;
+	if (map->f_color == -1 || map->c_color == -1)
 	{
-		if (!ft_strncmp(*line, "F ", 2))
-			map->f_color = color_parse(&(*line)[2]);
-		else if (!ft_strncmp(*line, "C ", 2))
-			map->c_color = color_parse(&(*line)[2]);
-		else
-			print_err("F and C are not seperated\n");
-		free(*line);
+		if (c == 'F')
+			map->f_color = color_parse(line);
+		else if (c == 'C')
+			map->c_color = color_parse(line);
 	}
+	else
+	{
+		printf("fcolor = %d\n", map->f_color);
+		printf("ccolor = %d\n", map->c_color);
+		print_err("F and C are not seperated\n");
+	}
+	// free(line);
 }

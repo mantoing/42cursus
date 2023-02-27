@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:23:54 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 21:46:52 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/27 08:01:35 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	check_map_edge(char **map, int w, int h)
 	i = -1;
 	while (++i < w)
 	{
-		if ((map[0][i] != '1' && map[0][i] != ' ') || (map[h - 1][i] != ' ' && \
-		map[h - 2][i] != '0'))
+		if ((map[0][i] != '1' && map[0][i] != ' ') || (map[h - 1][i] != '1' && \
+		map[h - 2][i] != ' '))
 			print_err("invalid layer edge of map\n");
 		if ((map[0][i] == ' ' && map[1][i] == '0') || (map[h - 1][i] == ' ' && \
 		map[h - 2][i] == '0'))
@@ -54,6 +54,7 @@ void	check_wall(char **map, int w, int h)
 
 	if (w < 3 || h < 3)
 		print_err("map is too small\n");
+	printf("height %d\n", h);
 	check_map_edge(map, w, h);
 	y = 0;
 	while (++y < h - 1)

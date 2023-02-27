@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:08:11 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 22:13:22 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/02/27 18:19:36 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(int ac, char **av)
 	printf("%s\n", info.map.dir_we);
 	printf("celling color: %d\n", info.map.c_color);
 	printf("floor color: %d\n", info.map.f_color);
-	printf("row: %d\ncol; %d\n", info.map.h, info.map.w);
 	for (int y = 0; y < info.map.h; y++)
 	{
 		for(int x = 0; x < info.map.w; x++)
