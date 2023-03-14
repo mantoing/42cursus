@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kwpark <kwpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:18:28 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/27 04:31:10 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/07 18:31:11 by kwpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
-// static void	free_str(char **str)
-// {
-// 	int	i;
+static void	free_str(char **str)
+{
+	int	i;
 
-// 	i = -1;
-// 	while (str[++i])
-// 		free(str[i]);
-// 	free(str);
-// }
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
 
 static int	change_str_to_int(char *str)
 {
-	int	result;
 	int	i;
+	int	result;
 
 	result = 0;
 	i = -1;
+	while (ft_isspace(*str))
+		str++;
 	while (str[++i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -36,9 +38,19 @@ static int	change_str_to_int(char *str)
 		result *= 10;
 		result += str[i] - '0';
 	}
-	if (result < 0 || result > 255)
+	if (i > 3 || result < 0 || result > 255)
 		print_err("color is not 0~255\n");
 	return (result);
+}
+
+static int	get_strnum(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 static int	color_parse(char *line)
@@ -50,21 +62,17 @@ static int	color_parse(char *line)
 	int		color;
 
 	str = ft_split(line, ',');
-	if (!str)
-		print_err("split error\n" );
-	if (str[0] == NULL || str[1] == NULL || str[2] == NULL)
-		print_err("COLOR imformations split dailed\n");
+	if (!str || !str[0] || !str[1] || !str[2] || get_strnum(str) != 3)
+	{
+		free_str(str);
+		print_err("Wrong color value\n");
+	}
 	color = 0;
-	str[2][ft_strlen(str[2]) - 1] = '\0';
 	rgb_r = change_str_to_int(str[0]);
 	rgb_g = change_str_to_int(str[1]);
 	rgb_b = change_str_to_int(str[2]);
-	printf("r = %d\n", rgb_r);
-	printf("g = %d\n", rgb_g);
-	printf("b = %d\n", rgb_b);
 	color = (rgb_r << 16) + (rgb_g << 8) + rgb_b;
-	printf("color = %d\n", color);
-	// free_str(str);
+	free_str(str);
 	return (color);
 }
 
@@ -81,10 +89,5 @@ void	check_color(t_map *map, char *line, char c)
 			map->c_color = color_parse(line);
 	}
 	else
-	{
-		printf("fcolor = %d\n", map->f_color);
-		printf("ccolor = %d\n", map->c_color);
 		print_err("F and C are not seperated\n");
-	}
-	// free(line);
 }

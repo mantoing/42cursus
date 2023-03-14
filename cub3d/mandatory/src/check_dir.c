@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kwpark <kwpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:17:21 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 19:18:26 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/07 16:04:04 by kwpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static char	*check_texture(char *line)
 {

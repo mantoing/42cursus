@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_parse_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kwpark <kwpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 19:29:11 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/27 07:57:15 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/07 20:01:23 by kwpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d_bonus.h"
 
 static int	set_dir_player(char c)
 {
@@ -22,7 +22,7 @@ static int	set_dir_player(char c)
 		return (E);
 	else if (c == 'W')
 		return (W);
-	return (0);
+	return (-1);
 }
 
 static void	check_element_dir(t_info *info, char *line)
@@ -38,11 +38,9 @@ static void	check_element_dir(t_info *info, char *line)
 		line_c = line[i];
 		if (line_c == 'N' || line_c == 'S' || line_c == 'E' || line_c == 'W')
 		{
-			printf("palyer status : check_element %d\n", info->player.status);
-			if (info->player.status != 0)
+			if (info->player.status != -1)
 				print_err("we only need one player\n");
 			info->player.status = set_dir_player(line_c);
-			printf("palyer status : after check_element %d\n", info->player.status);
 		}
 		i++;
 	}
@@ -54,25 +52,29 @@ static void	check_element_dir(t_info *info, char *line)
 
 static void	check_type(t_info *info, char *line)
 {
-	int		i;
 	t_map	*m;
+	int		i;
 
 	m = &info->map;
-	if (!ft_strncmp("NO ", line, 3) || !ft_strncmp("SO ", line, 3) || \
-			!ft_strncmp("WE ", line, 3) || !ft_strncmp("EA ", line, 3))
-		check_dir(&info->map, line, line[0]);
-	if (!ft_strncmp("F ", line, 2) || !ft_strncmp("C ", line, 2))
-		check_color(&info->map, line, line[0]);
 	i = 0;
+	if (!(*line))
+		return ;
 	while (ft_isspace(line[i]))
 		i++;
-	if (line[i] == '0' || line[i] == '1')
+	if (!ft_strncmp("NO ", line + i, 3) || !ft_strncmp("SO ", line + i, 3) || \
+			!ft_strncmp("WE ", line + i, 3) || !ft_strncmp("EA ", line + i, 3))
+		check_dir(&info->map, line + i, line[i]);
+	else if (!ft_strncmp("F ", line + i, 2) || !ft_strncmp("C ", line + i, 2))
+		check_color(&info->map, line, line[i]);
+	else if (line[i] == '0' || line[i] == '1')
 	{
 		if (!m->dir_ea || !m->dir_no || !m->dir_so || !m->dir_we || \
 			(m->f_color == -1) || (m->c_color == -1))
-				print_err("map texture or color error\n");
+			print_err("map texture or color error\n");
 		check_element_dir(info, line);
 	}
+	else
+		print_err("not valid line\n");
 }
 
 int	ft_parse(char *name, t_info *info)
@@ -94,6 +96,7 @@ int	ft_parse(char *name, t_info *info)
 		check_type(info, line);
 		free(line);
 	}
+	close(fd);
 	load_map(name, info);
 	return (0);
 }

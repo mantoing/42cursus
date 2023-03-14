@@ -3,43 +3,89 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
+#    By: kwpark <kwpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/23 18:45:08 by jaeywon           #+#    #+#              #
-#    Updated: 2023/02/23 22:02:51 by jaeywon          ###   ########.fr        #
+#    Created: 2022/09/10 15:24:20 by kwpark            #+#    #+#              #
+#    Updated: 2023/03/07 20:05:33 by kwpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-LIBDIR = ./libft
-SRC = main.c check_color.c check_dir.c ft_parse.c utils.c init.c check_wall.c \
-		load_map.c
-OBJ = $(SRC:.c=.o)
+
 NAME = cub3D
-MLXDIR = ./mlx
 
-all : $(NAME)
+NAMEB = cub3D_bonus
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME) : $(OBJ)
-		$(MAKE) all -C $(LIBDIR)
-		$(MAKE) -C $(MLXDIR)
-		$(CC) -o $(NAME) $(OBJ) -L $(LIBDIR) -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
+LIBFT = libft
 
-clean :
-		$(MAKE) -C $(LIBDIR) clean
-		$(MAKE) -C $(MLXDIR) clean
-		rm -f $(OBJ)
+MLX = minilibx
 
-fclean : clean
-		$(MAKE) -C $(LIBDIR) fclean
-		rm -f $(NAME)
+SOURCES = 	mandatory/src/check_color.c \
+			mandatory/src/check_dir.c \
+			mandatory/src/check_wall.c \
+			mandatory/src/cub3d_utils.c \
+			mandatory/src/cub3d.c \
+			mandatory/src/ft_parse.c \
+			mandatory/src/init.c \
+			mandatory/src/key_update.c \
+			mandatory/src/load_map.c \
+			mandatory/src/raycasting_utils.c \
+			mandatory/src/raycasting.c \
+			mandatory/src/ft_parse_utils.c \
+			mandatory/src/utils.c
 
-re :
-		make fclean
-		make all
+BONUS = 	bonus/src/check_color_bonus.c \
+			bonus/src/check_dir_bonus.c \
+			bonus/src/check_wall_bonus.c \
+			bonus/src/cub3d_utils_bonus.c \
+			bonus/src/cub3d_bonus.c \
+			bonus/src/ft_parse_bonus.c \
+			bonus/src/init_bonus.c \
+			bonus/src/key_update_bonus.c \
+			bonus/src/load_map_bonus.c \
+			bonus/src/raycasting_utils_bonus.c \
+			bonus/src/raycasting_bonus.c \
+			bonus/src/ft_parse_utils_bonus.c \
+			bonus/src/utils_bonus.c
 
-.PHONY: all clean fclean re
+OBJS = $(SOURCES:.c=.o)
+OBJB = $(BONUS:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@make -C $(LIBFT)
+	@make -C $(MLX)
+	@cp libft/libft.a ./
+	@cp minilibx/libmlx.a ./
+	$(CC) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) libft.a libmlx.a
+
+bonus: $(NAMEB)
+
+$(NAMEB): $(OBJB)
+	@make -C $(LIBFT)
+	@make -C $(MLX)
+	@cp libft/libft.a ./
+	@cp minilibx/libmlx.a ./
+	$(CC) $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAMEB) $(OBJB) libft.a libmlx.a
+
+
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	@rm -f $(OBJS) libft.a libmlx.a
+	@make clean -C $(LIBFT)
+	@rm -f $(OBJB)
+
+fclean: clean
+	@rm -f $(NAME)
+	@rm -f $(NAMEB)
+	@make fclean -C $(LIBFT)
+	@make clean -C $(MLX)
+
+re: fclean all
+
+.PHONY : all, clean, fclean, re, bonus

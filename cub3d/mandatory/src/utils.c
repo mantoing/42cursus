@@ -6,11 +6,17 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:33:12 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/23 21:15:41 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:32:13 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
+
+int	quit_game(t_info *info)
+{
+	mlx_destroy_window(info->mlx, info->win);
+	exit(0);
+}
 
 int	ft_isspace(char c)
 {
