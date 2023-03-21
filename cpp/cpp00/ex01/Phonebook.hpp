@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/02/14 19:57:27 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:57:31 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,17 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
+# include <iostream>
 
-class Phonebook{
-	
-private:
-	Cotact	contact[8];
+class PhoneBook{
+	Contact contact[8];
 	static int num;
-	static bool full;
-	
+	static int full_flag;
+
 public:
-	Phonebook(/* args */);
-	~Phonebook();
-
-Phonebook::Phonebook(/* args */)
-{
-}
-
-Phonebook::~Phonebook()
-{
-}
-
+	void	add_info(void);
+	void	search_info(void);
+	std::string readline_handle(void);
+};
 
 #endif
