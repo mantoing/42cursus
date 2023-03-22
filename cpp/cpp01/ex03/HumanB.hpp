@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 20:24:28 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 21:32:51 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-# include "Contact.hpp"
-# include <iostream>
+# include "Weapon.hpp"
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
-
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+class HumanB {
+ private:
+	std::string name;
+	Weapon *weapon;
+ public:
+	HumanB(std::string name);
+	void setWeapon(Weapon &weapon);
+	void attack(void);
 };
-
 #endif

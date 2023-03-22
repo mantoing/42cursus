@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 15:33:01 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 16:02:52 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+Zombie::Zombie(void){
+	
+}
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
+Zombie::Zombie(std::string name){
+	this->name = name;
+}
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
+Zombie::~Zombie(void){
+	std::cout << this->name << ": is dead" << std::endl;
+}
 
-#endif
+void Zombie::announce(){
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string name){
+	this->name = name;
+}

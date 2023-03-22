@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 14:16:21 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 14:56:31 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+int main(void){
+	Zombie stacktomato1("tomato");
+	Zombie *heapcoriander = newZombie("coriander");
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
-
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
-
-#endif
+	randomChump("tomato2");
+	stacktomato1.announce();
+	heapcoriander->announce();
+	delete heapcoriander;
+	return (0);
+}

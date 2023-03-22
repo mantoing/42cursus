@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 19:31:18 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 20:20:58 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Weapon.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+const	std::string& Weapon::getType(void){
+	return (this->type);
+}
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
+void	Weapon::setType(std::string type){
+	this->type = type;
+}
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
-
-#endif
+Weapon::Weapon(std::string type){
+	this->type = type;
+}
+Weapon::Weapon(void){
+	
+}

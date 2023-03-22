@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 15:53:00 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 16:02:30 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+Zombie* zombieHorde(int N, std::string name){
+	Zombie *zombieHorde = new Zombie[N];
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
-
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
-
-#endif
+	for(int i=0; i < N; i++)
+		zombieHorde[i].setName(name);
+	return (zombieHorde);
+}

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 14:16:37 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 14:40:19 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-# include "Contact.hpp"
 # include <iostream>
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
-
+class Zombie
+{
+private:
+	std::string name;
 public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+	Zombie(std::string name);
+	~Zombie(void);
+	void	announce(void);
 };
+
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/22 14:05:14 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/22 14:16:35 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/22 14:45:42 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+Zombie::Zombie(std::string name){
+	this->name = name;
+}
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
+Zombie::~Zombie(void){
+	std::cout << this->name << ": is dead" << std::endl;
+}
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
-
-#endif
+void	Zombie::announce(void){
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
