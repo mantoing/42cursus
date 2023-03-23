@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 15:20:42 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/23 15:24:42 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/23 17:02:57 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/23 18:33:57 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#include "sed.hpp"
 
-# include "Weapon.hpp"
+int print_error(std::string str){
+	std::cout << str << std::endl;
+	return (1);
+}
 
-class HumanA {
-	private:
-		std::string name;
-		Weapon &weapon;
+int main(int ac, char **av){
+	Sed	sed;
 
-	public:
-		HumanA(std::string name, Weapon &weapon);
-		void attack(void);
-};
-
-#endif
+	if (ac != 4 || std::strlen(av[1]) == 0)
+		return (print_error("argument error"));
+	sed.set_file(av[1]);
+	sed.set_s1(av[2]);
+	sed.set_s2(av[3]);
+	sed.change_s1_to_s2();
+	return (0);
+}

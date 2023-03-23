@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 15:20:42 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/23 15:24:42 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/03/23 19:38:43 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/03/23 20:43:46 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_HPP
-# define HUMANA_HPP
+#include "Harl.hpp"
 
-# include "Weapon.hpp"
+int main(int ac, char **av){
+	
+	if (ac != 2){
+		std::cout << "ac error" << std::endl;
+		return (1);
+	}
+	Harl harl;
 
-class HumanA {
-	private:
-		std::string name;
-		Weapon &weapon;
-
-	public:
-		HumanA(std::string name, Weapon &weapon);
-		void attack(void);
-};
-
-#endif
+	harl.complain(av[1]);
+	return (0);
+}
