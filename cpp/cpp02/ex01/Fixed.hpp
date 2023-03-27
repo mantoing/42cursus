@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:18:06 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/27 16:18:23 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/03/27 18:57:21 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,20 @@
 
 class Fixed {
  private:
-	/* data */
+	int	value;
+	static const int	bits = 8;
  public:
-	Fixed(/* args */);
-	Fixed(const Fixed& obj);
+	Fixed();
+	Fixed(const int n);
+	Fixed(const float f);
+	Fixed(const Fixed& src);
 	~Fixed();
-	Fixed& operator=(const Fixed& obj);
+	Fixed& operator=(const Fixed& src);
+	int	getRawBits(void) const;
+	void setRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
 };
+std::ostream& operator<<(std::ostream &out, const Fixed &fix);
 
 #endif
