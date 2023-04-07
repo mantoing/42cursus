@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 20:32:38 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/08 03:25:25 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/05 21:56:10 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/08 04:40:46 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-int	main( void )
-{
-	ScavTrap st("scavtrap");
-	ClapTrap ct("claptrap");
+# include "ClapTrap.hpp"
+# include <iostream>
 
-	st.attack("kimchi");
 
-	ct.takeDamage(6);
-	ct.beRepaired(4);
-	ct.takeDamage(3);
-	ct.beRepaired(8);
-	ct.takeDamage(42);
-	std::cout << std::endl;
+class ScavTrap: public ClapTrap{
+ public:
+	ScavTrap();
+	ScavTrap(std::string _name);
+	~ScavTrap();
+	ScavTrap(const ScavTrap& src);
+	ScavTrap& operator=(const ScavTrap& scav);
+	void attack(const std::string& target);
+	void guardGate();
+};
 
-	st.takeDamage(6);
-	st.beRepaired(4);
-	st.takeDamage(3);
-	st.beRepaired(8);
-}
+#endif
