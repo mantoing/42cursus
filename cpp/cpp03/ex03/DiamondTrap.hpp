@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 20:30:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/12 20:30:11 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/12 21:07:06 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/12 22:17:46 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 # include <iostream>
 
 
-class FragTrap: public ClapTrap{
+class  DiamondTrap : public FragTrap, public ScavTrap {
+ private:
+	std::string _name;
  public:
-	FragTrap();
-	FragTrap(std::string _name);
-	~FragTrap();
-	FragTrap(const FragTrap& src);
-	FragTrap& operator=(const FragTrap& frag);
-	void highFivesGuys(void);
+	 DiamondTrap();
+	 DiamondTrap(std::string name);
+	 DiamondTrap(const DiamondTrap& diamond);
+	~ DiamondTrap();
+	 DiamondTrap& operator=(const  DiamondTrap& obj);
+	 void whoAmI(void);
+	 void printStatus(void);
 };
 
 #endif

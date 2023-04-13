@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 15:53:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/10 21:02:12 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/12 20:30:10 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/12 22:19:55 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include <sstream>
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-Zombie* zombieHorde(int N, std::string name){
-	Zombie *zombieHorde = new Zombie[N];
-	std::stringstream	stringStream;
+# include "ClapTrap.hpp"
+# include <iostream>
 
-	for(int i=0; i < N; i++){
-		stringStream.str(std::string());
-			stringStream << i + 1;
-		zombieHorde[i].setName(name + "_" + stringStream.str());
-	}
-	return (zombieHorde);
-}
+
+class FragTrap: virtual public ClapTrap{
+ public:
+	FragTrap();
+	FragTrap(std::string _name);
+	~FragTrap();
+	FragTrap(const FragTrap& src);
+	FragTrap& operator=(const FragTrap& frag);
+	void highFivesGuys(void);
+};
+
+#endif

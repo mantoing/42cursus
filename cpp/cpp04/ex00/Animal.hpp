@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 15:53:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/10 21:02:12 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/13 06:14:06 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/13 15:14:03 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include <sstream>
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-Zombie* zombieHorde(int N, std::string name){
-	Zombie *zombieHorde = new Zombie[N];
-	std::stringstream	stringStream;
+# include <iostream>
 
-	for(int i=0; i < N; i++){
-		stringStream.str(std::string());
-			stringStream << i + 1;
-		zombieHorde[i].setName(name + "_" + stringStream.str());
-	}
-	return (zombieHorde);
-}
+
+class Animal {
+ protected:
+	std::string type;
+ public:
+	Animal();
+	Animal(const Animal& obj);
+	virtual ~Animal();
+	Animal& operator=(const Animal& obj);
+	virtual void makeSound(void) const;
+	std::string getType() const;
+};
+
+#endif

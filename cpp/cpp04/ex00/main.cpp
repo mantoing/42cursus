@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 15:53:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/10 21:02:12 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/13 06:13:49 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/13 14:24:44 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include <sstream>
-
-Zombie* zombieHorde(int N, std::string name){
-	Zombie *zombieHorde = new Zombie[N];
-	std::stringstream	stringStream;
-
-	for(int i=0; i < N; i++){
-		stringStream.str(std::string());
-			stringStream << i + 1;
-		zombieHorde[i].setName(name + "_" + stringStream.str());
-	}
-	return (zombieHorde);
+int main()
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	...
+	return 0;
 }

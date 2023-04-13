@@ -1,0 +1,34 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/05 22:01:23 by jaeywon           #+#    #+#              #
+#    Updated: 2023/04/12 22:16:32 by jaeywon          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = DiamondTrap
+CC = c++
+CFLAGS = --std=c++98 -Wall -Wextra -Werror
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+OBJS = $(SRCS:.cpp=.o)
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o : %.cpp
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+clean :
+	rm -f $(OBJS)
+
+fclean :
+	rm -f $(OBJS)
+	rm -f $(NAME)
+
+re : fclean all

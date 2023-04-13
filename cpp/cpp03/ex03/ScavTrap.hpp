@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 15:53:00 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/10 21:02:12 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/05 21:56:10 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/12 22:20:03 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-#include <sstream>
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-Zombie* zombieHorde(int N, std::string name){
-	Zombie *zombieHorde = new Zombie[N];
-	std::stringstream	stringStream;
+# include "ClapTrap.hpp"
+# include <iostream>
 
-	for(int i=0; i < N; i++){
-		stringStream.str(std::string());
-			stringStream << i + 1;
-		zombieHorde[i].setName(name + "_" + stringStream.str());
-	}
-	return (zombieHorde);
-}
+
+class ScavTrap: virtual public ClapTrap{
+ public:
+	ScavTrap();
+	ScavTrap(std::string _name);
+	~ScavTrap();
+	ScavTrap(const ScavTrap& src);
+	ScavTrap& operator=(const ScavTrap& scav);
+	void attack(const std::string& target);
+	void guardGate();
+};
+
+#endif
