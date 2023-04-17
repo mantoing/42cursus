@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 14:49:24 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/17 18:06:11 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/17 21:54:51 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ Animal &Animal::operator=(const Animal &obj) {
 		return (*this);
 	type = obj.type;
 	return (*this);
-}
-
-void Animal::makeSound() const {
-	std::cout << "default type animal can`t make sounds!" << std::endl;
 }
 
 std::string Animal::getType() const {

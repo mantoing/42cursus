@@ -6,14 +6,14 @@
 #    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/13 06:13:08 by jaeywon           #+#    #+#              #
-#    Updated: 2023/04/13 06:13:46 by jaeywon          ###   ########.fr        #
+#    Updated: 2023/04/17 17:48:43 by jaeywon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Animal
 CC = c++
 CFLAGS = --std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
