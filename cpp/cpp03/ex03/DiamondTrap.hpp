@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 21:07:06 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/12 22:17:46 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 19:12:53 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class  DiamondTrap : public FragTrap, public ScavTrap {
  private:
-	std::string _name;
+	std::string name;
  public:
 	 DiamondTrap();
 	 DiamondTrap(std::string name);

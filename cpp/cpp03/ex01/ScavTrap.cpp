@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 22:00:52 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/08 04:39:44 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 18:58:33 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ ScavTrap::ScavTrap(): ClapTrap() {
 	std::cout << "ScavTrap Constructor(Default) called" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string _name): ClapTrap(_name) {
-	this->name = _name;
+ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
+	this->name = name;
 	this->Hit_Points = 100;
 	this->Energy_points = 50;
 	this->Attack_damage = 20;
@@ -69,5 +69,3 @@ void ScavTrap::guardGate(void) {
 		this->Energy_points--;
 	}
 }
-
-//ㄴㅐ일 와서 메인문 확인 및 실행.

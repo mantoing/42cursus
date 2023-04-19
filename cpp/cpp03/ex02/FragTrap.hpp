@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 20:30:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/12 20:30:11 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 19:10:44 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class FragTrap: public ClapTrap{
  public:
 	FragTrap();
-	FragTrap(std::string _name);
+	FragTrap(std::string name);
 	~FragTrap();
 	FragTrap(const FragTrap& src);
 	FragTrap& operator=(const FragTrap& frag);

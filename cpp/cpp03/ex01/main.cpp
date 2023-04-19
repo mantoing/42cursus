@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 20:32:38 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/08 03:25:25 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 19:05:57 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main( void )
 {
-	ScavTrap st("scavtrap");
-	ClapTrap ct("claptrap");
+	ScavTrap st("sca");
+	ClapTrap ct("cla");
 
 	st.attack("kimchi");
 
@@ -31,4 +31,8 @@ int	main( void )
 	st.beRepaired(4);
 	st.takeDamage(3);
 	st.beRepaired(8);
+	st.takeDamage(42);
+
+	st.guardGate();
+	return (0);
 }

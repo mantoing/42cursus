@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:18:04 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/03/27 17:23:28 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 18:50:34 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Fixed::~Fixed(){
 //고정 소수점을 정수로
 //왼쪽우로 8비트 밀어준것을 다시 오른쪽으로 8비트 밀어 원래대로 돌리고 반환.
 int Fixed::toInt(void) const{
-	return (this->value >> this->bits);
+	return (roundf(toFloat()));
 }
 
 //고정소수점을 실수로

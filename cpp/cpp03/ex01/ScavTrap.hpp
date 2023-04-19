@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 21:56:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/08 04:40:29 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/19 19:07:40 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 class ScavTrap: public ClapTrap{
  public:
 	ScavTrap();
-	ScavTrap(std::string _name);
+	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap& src);
 	~ScavTrap();
 	ScavTrap& operator=(const ScavTrap& scav);
-	void attack(const std::string& target);
+	void attack(std::string const& target);
 	void guardGate();
 };
 
