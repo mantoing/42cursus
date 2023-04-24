@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:10:18 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/24 21:39:11 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/24 21:43:37 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
-# include "Contact.hpp"
 # include <iostream>
+# include <string>
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
+class ICharacter;
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+class AMateria {
+ protected:
+  std::string type;
+
+ public:
+  AMateria();
+  AMateria(std::string const& type);
+  AMateria(AMateria const& obj);
+  virtual ~AMateria();
+  AMateria &operator=(const AMateria &src);
+  std::string const& getType() const;
+  virtual AMateria* clone() const = 0;
+  virtual void use(ICharacter& target);
 };
 
 #endif

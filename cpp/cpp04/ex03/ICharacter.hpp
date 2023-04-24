@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:10:18 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/24 21:35:14 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/24 21:38:55 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-# include "Contact.hpp"
 # include <iostream>
+# include "AMateria.hpp"
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
-
+class ICharacter
+{
 public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+	virtual ~ICharacter() {}
+	virtual std::string const & getName() const = 0;
+	virtual void equip(AMateria* m) = 0;
+	virtual void unequip(int idx) = 0;
+	virtual void use(int idx, ICharacter& target) = 0;
 };
 
 #endif

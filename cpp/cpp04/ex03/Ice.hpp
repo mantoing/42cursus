@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:10:18 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/24 21:55:32 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/24 21:59:12 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
-# include "Contact.hpp"
 # include <iostream>
+# include "AMateria.hpp"
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+class Ice : public AMateria{
+ public:
+	Ice();
+	Ice(const Ice& obj);
+	virtual ~Ice();
+	Ice& operator=(const Ice& obj);
+
+	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:10:18 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/24 22:04:22 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/24 22:04:41 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
-# include "Contact.hpp"
 # include <iostream>
+# include "AMateria.hpp"
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
+class Cure : public AMateria{
+ public:
+	Cure();
+	Cure(const Cure& obj);
+	virtual ~Cure();
+	Cure& operator=(const Cure& obj);
+
+	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif

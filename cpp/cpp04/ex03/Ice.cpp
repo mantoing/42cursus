@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 19:51:25 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:10:18 by jaeywon          ###   ########.fr       */
+/*   Created: 2023/04/24 21:58:22 by jaeywon           #+#    #+#             */
+/*   Updated: 2023/04/24 22:06:17 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Ice.hpp"
 
-# include "Contact.hpp"
-# include <iostream>
+Ice::Ice() {
+	this->type = "ice";
+}
 
-class PhoneBook{
-	Contact contact[8];
-	static int num;
-	static int full_flag;
+Ice::Ice( const Ice& obj) {
+	*this = obj;
+}
 
-public:
-	void	add_info(void);
-	void	search_info(void);
-	std::string readline_handle(void);
-};
+Ice::~Ice() {
+	
+}
 
-#endif
+Ice &Ice::operator=(Ice const &obj) {
+	if (this == &obj)
+		return (*this);
+	type = obj.type;
+	return (*this);
+}
+
+AMateria *Ice::clone() const {
+	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter &target){
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
