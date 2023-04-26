@@ -6,14 +6,15 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 21:54:06 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/24 21:54:09 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/26 17:36:39 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMATERIASOURCE_HPP
-#define IMATERIASOURCE_HPP
+# define IMATERIASOURCE_HPP
 
-#include "AMateria.hpp"
+# include <string>
+# include "AMateria.hpp"
 
 class IMateriaSource
 {
