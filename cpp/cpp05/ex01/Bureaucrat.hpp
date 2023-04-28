@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:48:01 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/27 19:09:43 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/04/28 22:19:50 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include <string>
+
+class Form;
 
 class Bureaucrat {
  private:
@@ -38,6 +40,7 @@ class Bureaucrat {
 
 	const std::string getName(void) const;
 	int getGrade(void) const;
+	void signForm(Form &Form);
 
 	void	increment(void);
 	void	decrement(void);
