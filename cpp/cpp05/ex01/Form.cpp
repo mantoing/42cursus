@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:58 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/28 22:04:01 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/04 16:56:51 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Form::Form(const std::string name, const int grade_sign, const int grade_exe)
 			throw Form::GradeTooLowException();
 }
 
-Form::Form(const Form& obj) : name(obj.name), grade_sign(obj.grade_sign), grade_exe(obj.getGrade_exe){
+Form::Form(const Form& obj) : name(obj.name), grade_sign(obj.grade_sign), grade_exe(obj.grade_exe){
 	*this = obj;
 }
 
@@ -37,7 +37,7 @@ Form& Form::operator=(const Form& obj) {
 	return (*this);
 }
 
-int Form::std::string getName() const {
+std::string Form::getName() const {
 	return (name);
 }
 
