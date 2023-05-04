@@ -2,7 +2,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
-# include <stdlib.h>
+# include <cstdlib>
+# include <ctime>
 # include <ctime>
 # include "AForm.hpp"
 
