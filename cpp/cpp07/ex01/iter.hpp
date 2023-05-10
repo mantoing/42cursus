@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:35:36 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/10 18:41:00 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/10 19:55:39 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,19 @@
 
 # include <iostream>
 
-template <Typename T>
-void iter()
+template <typename T>
+void iter(T *array, int len, void (*f)(T &a))
+{
+	for (int i = 0; i < len; i++)
+	{
+		(*f)(array[i]);
+	}
+}
+
+template <typename T>
+void print(T &a)
+{
+	std::cout << a << std::endl;
+}
 
 #endif
