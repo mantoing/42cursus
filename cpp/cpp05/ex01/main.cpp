@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 19:08:45 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:09:38 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:15:32 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int main(){
 	std::cout << std::endl;
 	{
 		try{
-			Bureaucrat seok("seok", 3);
+			Bureaucrat jae("jae", 3);
 			Form 		atom("atom", 15, 20);
-			std::cout << seok << "signFrom => ";
-			seok.signForm(atom);
+			std::cout << jae << "signFrom => ";
+			jae.signForm(atom);
 		}catch (std::exception &error){
 			std::cout << "ERROR!!" << std::endl;
 			std::cout << error.what() << std::endl;
@@ -31,10 +31,10 @@ int main(){
 	std::cout << std::endl;
 	{
 		try{
-			Bureaucrat choi("choi", 18);
+			Bureaucrat yun("yun", 3);
 			Form 		atom("atom", 15, 20);
-			std::cout << choi;
-			choi.signForm(atom);
+			std::cout << yun;
+			yun.signForm(atom);
 		}catch (std::exception &error){
 			std::cout << "ERROR!!" << std::endl;
 			std::cout << error.what() << std::endl;

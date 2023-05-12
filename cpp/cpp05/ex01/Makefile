@@ -6,14 +6,14 @@
 #    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 19:58:25 by jaeywon           #+#    #+#              #
-#    Updated: 2023/05/09 15:09:33 by jaeywon          ###   ########.fr        #
+#    Updated: 2023/05/12 20:08:25 by jaeywon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat_form
 CC = c++
 CFLAGS = --std=c++98 -Wall -Wextra -Werror
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)

@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:12:30 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:09:41 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:08:04 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
  private:

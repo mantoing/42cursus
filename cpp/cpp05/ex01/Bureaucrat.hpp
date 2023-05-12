@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:48:01 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:09:48 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:07:34 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 class Form;
 

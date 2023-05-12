@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:48:01 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/27 19:09:43 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:05:06 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ class Bureaucrat {
 	class GradeTooHighException : public std::exception {
 		public:
 			const char *what() const throw();
-	};
+	}; // try catch문을 사용하기에 앞서 필요한 예외 처리 부분을 처리해 주기 위해 what()문 설정
 	class GradeTooLowException : public std::exception {
 		public:
 			const char *what() const throw();
-	};
+	}; // try catch문을 사용하기에 앞서 필요한 예외 처리 부분을 처리해 주기 위해 what()문 설정
 	Bureaucrat();
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat& obj);

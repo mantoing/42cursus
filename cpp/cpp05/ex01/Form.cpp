@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:24:58 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:09:44 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/12 20:15:05 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ Form::Form() : name(""), sign_check(false), grade_sign(150), grade_exe(150) {
 }
 
 Form::Form(const std::string name, const int grade_sign, const int grade_exe)
-	: name(name), grade_exe(150), grade_sign(150), sign_check(false) {
+	: name(name), sign_check(false), grade_sign(grade_sign), grade_exe(grade_exe) {
 		if (grade_sign < 1 || grade_exe < 1)
 			throw Form::GradeTooHighException();
-		if (grade_sign < 150 || grade_exe < 150)
+		if (grade_sign > 150 || grade_exe > 150)
 			throw Form::GradeTooLowException();
 }
 
