@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:36 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:10:36 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/22 21:41:44 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void Convert::CheckInt() const {
 }
 
 void Convert::CheckChar() const {
-	if (std::isprint(_double))
+	if (std::isprint(_char))
 	{
-		std::cout << "Cahr :" << "'" << _char << "'" << std::endl;
+		std::cout << "Char :" << "'" << _char << "'" << std::endl;
 		return ;
 	}
-	if (_double > std::numeric_limits<char>::min() - 1.0 \
+	else if (_double > std::numeric_limits<char>::min() - 1.0 \
 		&& _double < std::numeric_limits<char>::max() + 1.0)
 	{
-		std::cout << "Char : " << "Non displayable" << std::endl;
+		std::cout << "Char : " << _char << "Non displayable" << std::endl;
 		return ;
 	}
 	std::cout << " Char :";

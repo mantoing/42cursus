@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/10 17:35:14 by jaeywon           #+#    #+#              #
-#    Updated: 2023/05/17 20:51:42 by jaeywon          ###   ########.fr        #
+#    Created: 2023/05/17 22:46:44 by jaeywon           #+#    #+#              #
+#    Updated: 2023/05/17 22:47:09 by jaeywon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = iter
+NAME = MutantStack
 CC = c++
 CFLAGS = --std=c++98 -Wall -Wextra -Werror
 SRCS = main.cpp

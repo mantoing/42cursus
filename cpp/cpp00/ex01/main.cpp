@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:50:21 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/04/20 23:08:54 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/15 20:31:30 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ int main(void)
 	std::string	cmd;
 	PhoneBook pb;
 
-	a = 1;
-
-	a = Phonbook.num;
 	prompt_start();
 	while (1)
 	{

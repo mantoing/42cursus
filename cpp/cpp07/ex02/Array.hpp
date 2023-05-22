@@ -8,6 +8,7 @@ class Array {
  private:
 	unsigned int _size;
 	T *_data;
+	
  public:
 	Array() : _size(0), _data(NULL) {};
 	Array(unsigned int n) : _size(n), _data(new T(n)) {};
