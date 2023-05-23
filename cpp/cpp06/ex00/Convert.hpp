@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:38 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:10:39 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/23 17:00:17 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ class Convert {
  private:
 	const std::string _value;
 	double _double;
-	char _char;
-	int	_int;
-	float _float;
  public:
 	Convert();
 	Convert(std::string _value);
@@ -35,7 +32,9 @@ class Convert {
 	void CheckChar() const;
 	void CheckDouble() const;
 	void CheckFloat() const;
-	void PrintValue() const;
+
+	bool is_char(std::string value) const;
+
 };
 
 #endif

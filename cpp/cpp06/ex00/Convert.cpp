@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:36 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/22 21:41:44 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/23 17:00:14 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,61 @@ Convert::Convert() {
 
 }
 
-Convert::Convert(std::string value) : _value(value)
-		, _double(std::strtod(value.c_str(), NULL))
-		, _char(static_cast<char>(_double))
-		, _int(static_cast<int>(_double))
-		, _float(static_cast<float>(_double)) {
+Convert::Convert(std::string value) : _value(value) {
+	try{
+		if (is_char(value))
+			_double = static_cast<double>(value[0]);
+		else
+			_double = std::strtod(value.c_str(), NULL);
+	} catch (const std::exception& e) {
+		std::cerr << "Argument error" << std::endl;
+	}
 }
 
-Convert::Convert(const Convert& obj) :_value(obj._value)
-		, _double(obj._double)
-		, _char(obj._char)
-		, _int(obj._int)
-		, _float(obj._float) {
+Convert::Convert(const Convert& obj) {
+	*this = obj;
 }
 
 Convert::~Convert() {
 
 }
 
+bool Convert::is_char(std::string value) const{
+	if (value.length() == 1 && !std::isdigit(value[0]))
+		return (true);
+	return (false);
+}
+
 void Convert::CheckInt() const {
-	if (_double > std::numeric_limits<int>::min() - 1.0 \
-		&& _double < std::numeric_limits<int>::max() + 1.0) 
+	int d = static_cast<int>(_double);
+
+	if ((_double >= std::numeric_limits<int>::min() + 1.0 \
+		&& _double <= std::numeric_limits<int>::max() - 1.0)) 
 	{
-		std::cout << "Int : " << _int << std::endl;
+		std::cout << "Int : " << d << std::endl;
 		return ;
 	}
+	else 
 	std::cout << "Int :";
 	std::cout << "Impossible" << std::endl;
 }
 
 void Convert::CheckChar() const {
-	if (std::isprint(_char))
+	char c = static_cast<char>(_double);
+	
+	if (std::isprint(_double))
 	{
-		std::cout << "Char :" << "'" << _char << "'" << std::endl;
+		std::cout << "Char :" << "'" << c << "'" << std::endl;
 		return ;
 	}
-	else if (_double > std::numeric_limits<char>::min() - 1.0 \
-		&& _double < std::numeric_limits<char>::max() + 1.0)
+	else if (c > std::numeric_limits<char>::min() - 1.0 \
+		&& c < std::numeric_limits<char>::max() + 1.0)
 	{
-		std::cout << "Char : " << _char << "Non displayable" << std::endl;
+		std::cout << "Char : Impossible" << std::endl;
 		return ;
 	}
 	std::cout << " Char :";
-	std::cout << "Impossible" << std::endl; 
+	std::cout << "Non displayable" << std::endl; 
 }
 
 void Convert::CheckDouble() const {
@@ -82,6 +94,8 @@ void Convert::CheckDouble() const {
 }
 
 void Convert::CheckFloat() const {
+	float f = static_cast<float>(_double);
+	
 	if (_double != _double)
 	{
 		std::cout << "Float : " << "nanf" << std::endl;
@@ -105,16 +119,7 @@ void Convert::CheckFloat() const {
 		return ;
 	}
 	std::cout << "Float : ";
-	std::cout << std::fixed << std::setprecision(1) << _float  << "f" << std::endl;
-}
-
-void Convert::PrintValue() const {
-	std::cout << "**********************" << std::endl;
-	std::cout << "char: "  << _char << std::endl;
-	std::cout << "int: "  << _int << std::endl;
-	std::cout << "float: "  << _float << std::endl;
-	std::cout << "double: "  << _double << std::endl;
-	std::cout << "**********************" << std::endl;
+	std::cout << std::fixed << std::setprecision(1) << f << "f" << std::endl;
 }
 
 Convert &Convert::operator=(const Convert& obj) {
