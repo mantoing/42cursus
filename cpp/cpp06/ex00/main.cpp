@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:41 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:10:41 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/25 15:56:04 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	main(int argc, char* argv[])
 	}
 
 	Convert	converter(argv[1]);
-
-	// converter.printvalue();
-
 	converter.CheckChar();
 	converter.CheckInt();
 	converter.CheckFloat();

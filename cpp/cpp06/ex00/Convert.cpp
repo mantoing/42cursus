@@ -6,17 +6,20 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:36 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/23 17:00:14 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:20:20 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Convert.hpp"
 
+const std::string Convert::_value = "";
+double Convert::_double = 0.0;
+
 Convert::Convert() {
 
 }
 
-Convert::Convert(std::string value) : _value(value) {
+Convert::Convert(std::string value) {
 	try{
 		if (is_char(value))
 			_double = static_cast<double>(value[0]);
@@ -35,13 +38,13 @@ Convert::~Convert() {
 
 }
 
-bool Convert::is_char(std::string value) const{
+bool Convert::is_char(std::string value) {
 	if (value.length() == 1 && !std::isdigit(value[0]))
 		return (true);
 	return (false);
 }
 
-void Convert::CheckInt() const {
+void Convert::CheckInt() {
 	int d = static_cast<int>(_double);
 
 	if ((_double >= std::numeric_limits<int>::min() + 1.0 \
@@ -55,7 +58,7 @@ void Convert::CheckInt() const {
 	std::cout << "Impossible" << std::endl;
 }
 
-void Convert::CheckChar() const {
+void Convert::CheckChar() {
 	char c = static_cast<char>(_double);
 	
 	if (std::isprint(_double))
@@ -73,7 +76,7 @@ void Convert::CheckChar() const {
 	std::cout << "Non displayable" << std::endl; 
 }
 
-void Convert::CheckDouble() const {
+void Convert::CheckDouble(){
 	if (_double != _double)
 	{
 		std::cout << "Double : " << "nan" << std::endl;
@@ -93,7 +96,7 @@ void Convert::CheckDouble() const {
 	std::cout << std::fixed << std::setprecision(1) << _double << std::endl;
 }
 
-void Convert::CheckFloat() const {
+void Convert::CheckFloat() {
 	float f = static_cast<float>(_double);
 	
 	if (_double != _double)

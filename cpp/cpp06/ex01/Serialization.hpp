@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:54 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/09 15:10:55 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:26:04 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ struct Data {
 
 
 class Serialization {
- public:
+ private:
 	Serialization();
+ public:
 	Serialization(const Serialization& obj);
 	~Serialization();
 	Serialization& operator=(const Serialization& obj);

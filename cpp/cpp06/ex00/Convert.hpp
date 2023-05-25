@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:10:38 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/23 17:00:17 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:17:56 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@
 
 class Convert {
  private:
-	const std::string _value;
-	double _double;
- public:
+	static const std::string _value;
+	static double _double;
 	Convert();
+ public:
 	Convert(std::string _value);
 	Convert(const Convert& obj);
 	~Convert();
 	Convert& operator=(const Convert& obj);
 
-	void CheckInt() const;
-	void CheckChar() const;
-	void CheckDouble() const;
-	void CheckFloat() const;
+	static void CheckInt();
+	static void CheckChar();
+	static void CheckDouble();
+	static void CheckFloat();
 
-	bool is_char(std::string value) const;
+	static bool is_char(std::string value);
 
 };
 
