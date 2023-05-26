@@ -12,7 +12,7 @@ class Array {
  public:
 	Array() : _size(0), _data(NULL) {};
 	Array(unsigned int n) : _size(n), _data(new T(n)) {};
-	Array(const Array& obj) : _size(obj._size), _data(new T[_size]) {
+	Array(const Array& obj) : _size(obj._size), _data(new T[obj._size]) {
 		for (unsigned int i = 0; i < _size; i++) {
 			_data[i] = obj._data[i];
 		}
@@ -39,11 +39,11 @@ class Array {
 					}
 
 	};
-	T& operator[](unsigned int idx) {
-		if (idx >= _size) {
+	T& operator[](unsigned int i) {
+		if (i >= _size) {
 			throw(OutOfBound());
 		}
-		return (_data[idx]);
+		return (_data[i]);
 	}
 	unsigned int size() const {
 		return (_size);

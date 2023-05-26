@@ -6,7 +6,7 @@
 #    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 21:26:05 by jaeywon           #+#    #+#              #
-#    Updated: 2023/05/10 21:26:10 by jaeywon          ###   ########.fr        #
+#    Updated: 2023/05/26 17:07:04 by jaeywon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,3 +32,5 @@ fclean :
 	rm -f $(NAME)
 
 re : fclean all
+
+.PHONY: all bonus clean fclean re

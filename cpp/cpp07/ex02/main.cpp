@@ -6,15 +6,14 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:59:46 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/11 16:46:20 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/26 17:40:27 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Array.hpp"
 
-#define MAX_VAL 5
-
+#define MAX_VAL 750
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -30,27 +29,12 @@ int main(int, char**)
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
-		// std::cout << numbers[0] << std::endl;
-		// std::cout << tmp[0] << std::endl;
-		// std::cout << test[0] << std::endl << std::endl;
-		// int temp = numbers[0];
-		// numbers[0] = 1;
-		// std::cout << numbers[0] << std::endl;
-		// std::cout << tmp[0] << std::endl;
-		// std::cout << test[0] << std::endl << std::endl;
-		// numbers[0] = temp;
-		for (int j = 0; j < MAX_VAL; j++)
-		{
-			std::cout << "number[" << j << "] : " << numbers[j] << std::endl;
-		}
-		for (int k = 0; k < MAX_VAL; k++)
-		{
-			std::cout << "mirror[" << k << "] : " << mirror[k] << std::endl;
-		}
     }
-
+    
     for (int i = 0; i < MAX_VAL; i++)
     {
+        std::cout << "Numbers : " << numbers[i] << std::endl;
+        std::cout << "Mirrors : " << mirror[i] << std::endl;
         if (mirror[i] != numbers[i])
         {
             std::cerr << "didn't save the same value!!" << std::endl;
@@ -62,7 +46,7 @@ int main(int, char**)
         numbers[-2] = 0;
     }
     catch(const std::exception& e)
-    {
+    { 
         std::cerr << e.what() << '\n';
     }
     try
@@ -78,7 +62,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-
     delete [] mirror;
     return 0;
 }

@@ -6,15 +6,15 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:21:28 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/10 17:29:32 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/05/25 16:49:17 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 
 int main( void ) {
-	int a = 2;
-	int b = 3;
+	int a = -2;
+	int b = -3;
 	
 	::swap( a, b );
 	std::cout << "a = " << a << ", b = " << b << std::endl;
