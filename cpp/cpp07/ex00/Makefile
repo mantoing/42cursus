@@ -6,7 +6,7 @@
 #    By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 17:17:56 by jaeywon           #+#    #+#              #
-#    Updated: 2023/05/26 17:06:55 by jaeywon          ###   ########.fr        #
+#    Updated: 2023/05/28 19:13:52 by jaeywon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,4 +33,4 @@ fclean :
 
 re : fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
