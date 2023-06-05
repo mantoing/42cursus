@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 21:36:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/05/29 22:46:05 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/06/05 14:53:51 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,31 @@ BitcoinExchange::~BitcoinExchange(){
 
 }
 
+bool BitcoinExchange::isNumeric(const std::string& str) {
+    for (std::size_t i = 0; i < str.length(); ++i) {
+        if (!std::isdigit(str[i]) && !std::isspace(str[i]) && str[i] != '-' && str[i] != '.') {
+            return false;
+        }
+    }
+    return true;
+}
+
 void BitcoinExchange::splitString(const std::string& str, char delimiter, std::string& t1, std::string& t2) {
 	std::istringstream iss(str);
 	std::getline(iss, t1, delimiter);
 	std::getline(iss, t2, delimiter);
+	t1.erase(std::remove_if(t1.begin(), t1.end(), ::isspace), t1.end());
+	t2.erase(std::remove_if(t2.begin(), t2.end(), ::isspace), t2.end());
 }
 
 bool BitcoinExchange::isValidDate(const std::string& str) {
 	if (str.length() != 10) 
 		return (false);
 	int year, month, day;
-	if (sscanf(str.c_str(), "%d-%d-%d", &year, &month, &day) != 3)
-		return (false);
+	std::istringstream iss(str);
+    char dash1, dash2;
+    if (!(iss >> year >> dash1 >> month >> dash2 >> day) || dash1 != '-' || dash2 != '-')
+        return false;
 	if (month < 1 || month > 12 || day < 1 || day > 31)
 		return (false);
 	int maxDays = 31;
@@ -58,13 +71,19 @@ bool BitcoinExchange::isValidDate(const std::string& str) {
 }
 
 bool BitcoinExchange::isValidValue(const std::string& str) {
-    char* end;
+    char* end = NULL;
     double value = std::strtod(str.c_str(), &end);
 
     if (end == str.c_str() || *end != '\0') {
         return (false);
     }
-    if (value < 0.0 || value > 1000.0) {
+	if (value == 0.0 && !std::isdigit(str[0])) {
+		return (false);
+	}
+	if (*end && std::strcmp(end, "f")) {
+		return (false);
+	}
+    if (value < 0.0) {
         return (false);
     }
     return (true);
@@ -108,10 +127,49 @@ void BitcoinExchange::checkCsv(void){
 
 }
 
-void BitcoinExchange::calculate(char *csv) {
+bool BitcoinExchange::checkInput(const char *filename) {
+	std::ifstream file(filename);
+	if (!file) {
+		std::cout << "Failed to open file: " << filename << std::endl;
+		return (false);
+	}
+	if (file.peek() == std::ifstream::traits_type::eof()) {
+		std::cout << "File is empty : " << filename << std::endl;
+		file.close();
+		return (false);
+	}
+	std::string firstLine;
+	std::getline(file, firstLine);
+	std::stringstream ss(firstLine);
+	std::string str_date, str_value;
+	splitString(firstLine, '|', str_date, str_value);
+	if (str_date != "date" || str_value != "value") {
+		std::cout << "Invalid format in the first line: " << firstLine << std::endl;
+		file.close();
+		return (false);
+	}
+	std::string line;
+	while (std::getline(file, line)) {
+		if (line.empty()) {
+			continue;
+		}
+		std::stringstream ss(line);
+		std::string date, value;
+		splitString(line, '|', date, value);
+		if (!isNumeric(date) || !isNumeric(value)) {
+			std::cout << "Invalid data in the file: " << line << std::endl;
+			file.close();
+			return (false);
+		}
+	}
+	file.close();
+	return (false);
+}
+
+void BitcoinExchange::calculate(char *filename) {
 	try {
-		(void)csv;
 		checkCsv();
+		checkInput(filename);
 	} catch (...) {
 		return ;
 	}

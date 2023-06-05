@@ -16,13 +16,15 @@ class BitcoinExchange {
 	bool isValidDate(const std::string& str);
 	bool isValidValue(const std::string& str);
 	void checkCsv(void);
+	bool isNumeric(const std::string& str);
+	bool checkInput(const char* filename);
  public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& obj);
 	~BitcoinExchange();
 	BitcoinExchange& operator=(const BitcoinExchange& obj);
 
-	void calculate(char *csv);
+	void calculate(char *filename);
 	
 	class ThrowError : public std::exception {
 		public :
