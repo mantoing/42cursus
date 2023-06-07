@@ -39,7 +39,7 @@ class Array {
 					}
 
 	};
-	T& operator[](unsigned int i) {
+	T& operator[](unsigned int i) const {
 		if (i >= _size) {
 			throw(OutOfBound());
 		}
