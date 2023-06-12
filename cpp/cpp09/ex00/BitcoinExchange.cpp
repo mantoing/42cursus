@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 21:36:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/06/05 14:53:51 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/06/12 22:06:33 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,9 +121,9 @@ void BitcoinExchange::checkCsv(void){
 		}
 	}
 	csv.close();
-	for (std::map<std::string, float>::const_iterator it = btcData.begin(); it != btcData.end(); ++it) {
-        std::cout << "Date: " << it->first << ", Value: " << it->second << "\n";
-    }
+	// for (std::map<std::string, float>::const_iterator it = btcData.begin(); it != btcData.end(); ++it) {
+    //     std::cout << "Date: " << it->first << ", Value: " << it->second << "\n";
+    // }
 
 }
 
@@ -166,6 +166,66 @@ bool BitcoinExchange::checkInput(const char *filename) {
 	return (false);
 }
 
+int BitcoinExchange::stringToInt(const std::string& str) {
+    std::istringstream iss(str);
+    int result;
+    if (!(iss >> result)) {
+		std::cout << "Error: Failed to convert string to int" << std::endl;
+        // throw ThrowError();
+    }
+    return result;
+}
+
+float BitcoinExchange::match_DateValue(const std::string& date) {
+	std::map<std::string, float>::iterator it = btcData.find(date);
+	if (it != btcData.end()) {
+		return (it->second);
+	}
+	else {
+		std::map<std::string, float>::iterator lower = btcData.lower_bound(date);
+		if (lower == btcData.begin()) {
+			return (lower->second);
+		}
+		else if (lower == btcData.end()) {
+			return ((--lower)->second);
+		}
+		else {
+			std::map<std::string, float>::iterator prev = lower;
+			--prev;
+			return (prev->second);
+			}
+		}
+}
+
+void BitcoinExchange::match_cal(char *filename){
+	std::ifstream file(filename);
+	std::string firstline;
+
+	std::getline(file, firstline);
+	std::string line;
+	while (std::getline(file, line)){
+		if (line.empty()) {
+			continue;
+		}
+		std::stringstream ss(line);
+		std::string date, value;
+		splitString(line, '|', date, value);
+		float exchangeRate = match_DateValue(date);
+		std::cout << "Date: " << date << ", Value: " << exchangeRate << std::endl;
+		if (stringToInt(value) < 0)
+			std::cout << "Error: not a positive number." << std::endl;
+		else if (stringToInt(value) > 2147483647)
+			std::cout << "Error: too large a number." << std::endl;
+		else if (isValidDate(date) == false)
+			std::cout << "Error: bad input => " << date << std::endl;
+		else if (isValidValue(value) == false)
+			std::cout << "Error: bad input => " << value << std::endl;
+			
+	}
+
+
+}
+
 void BitcoinExchange::calculate(char *filename) {
 	try {
 		checkCsv();
@@ -173,6 +233,7 @@ void BitcoinExchange::calculate(char *filename) {
 	} catch (...) {
 		return ;
 	}
+	match_cal(filename);
 }
 
 const char* BitcoinExchange::ThrowError::what() const throw() {

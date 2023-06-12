@@ -18,7 +18,7 @@ RPN &RPN::operator=(const RPN& obj) {
 }
 
 const char* RPN::ThrowError::what() const throw() {
-	return ("ERROR: Check Value");
+	return ("Error: Check Value");
 }
 
 bool RPN::isOperator(char c) {

@@ -18,6 +18,9 @@ class BitcoinExchange {
 	void checkCsv(void);
 	bool isNumeric(const std::string& str);
 	bool checkInput(const char* filename);
+	void match_cal(char *filename);
+	float match_DateValue(const std::string& date);
+	int stringToInt(const std::string& str);
  public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& obj);
