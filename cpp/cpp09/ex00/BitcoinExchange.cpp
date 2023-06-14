@@ -6,7 +6,7 @@
 /*   By: jaeywon <jaeywon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 21:36:10 by jaeywon           #+#    #+#             */
-/*   Updated: 2023/06/12 22:06:33 by jaeywon          ###   ########.fr       */
+/*   Updated: 2023/06/14 20:06:57 by jaeywon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,6 @@ void BitcoinExchange::checkCsv(void){
 		}
 	}
 	csv.close();
-	// for (std::map<std::string, float>::const_iterator it = btcData.begin(); it != btcData.end(); ++it) {
-    //     std::cout << "Date: " << it->first << ", Value: " << it->second << "\n";
-    // }
-
 }
 
 bool BitcoinExchange::checkInput(const char *filename) {
@@ -169,10 +165,8 @@ bool BitcoinExchange::checkInput(const char *filename) {
 int BitcoinExchange::stringToInt(const std::string& str) {
     std::istringstream iss(str);
     int result;
-    if (!(iss >> result)) {
-		std::cout << "Error: Failed to convert string to int" << std::endl;
-        // throw ThrowError();
-    }
+    if (!(iss >> result))
+		return false;
     return result;
 }
 
@@ -210,20 +204,30 @@ void BitcoinExchange::match_cal(char *filename){
 		std::stringstream ss(line);
 		std::string date, value;
 		splitString(line, '|', date, value);
-		float exchangeRate = match_DateValue(date);
-		std::cout << "Date: " << date << ", Value: " << exchangeRate << std::endl;
-		if (stringToInt(value) < 0)
-			std::cout << "Error: not a positive number." << std::endl;
-		else if (stringToInt(value) > 2147483647)
-			std::cout << "Error: too large a number." << std::endl;
-		else if (isValidDate(date) == false)
+		float fvalue = std::strtod(value.c_str(), NULL);
+		if (isValidDate(date) == false)
 			std::cout << "Error: bad input => " << date << std::endl;
-		else if (isValidValue(value) == false)
-			std::cout << "Error: bad input => " << value << std::endl;
-			
+		if (!value.empty()) {
+			if (value == " " || value == "NULL"){
+				continue;
+			}
+			else {
+				if (fvalue < 0)
+					std::cout << "Error: not a positive number." << std::endl;
+				else if (isValidDate(date) == false)
+					std::cout << "Error: bad input => " << date << std::endl;
+				else if (isValidValue(value) == false)
+					std::cout << "Error: bad input => " << value << std::endl;
+				else if (!(stringToInt(value) == false)) {
+					float exchangeRate = match_DateValue(date);
+					float multiplevalue = fvalue * exchangeRate;
+					std::cout << date << " => " << value << " = " << multiplevalue << std::endl;
+				}
+				else
+					std::cout << "Error: too large a number" << std::endl;
+			}
+		}
 	}
-
-
 }
 
 void BitcoinExchange::calculate(char *filename) {
