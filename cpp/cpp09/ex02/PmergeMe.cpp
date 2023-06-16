@@ -45,10 +45,6 @@ void PmergeMe::print_deque() {
 		std::cout << deque[i] << " ";
 }
 
-// void PmergeMe::start() {
-// 	print_list();
-// }
-
 void PmergeMe::saveToDeque(const char* input) {
 	std::istringstream iss(input);
 	int num;
@@ -73,6 +69,84 @@ void PmergeMe::saveToList(const char* input) {
 			return;
 		}
 	}
+}
+
+void PmergeMe::start() {
+	mergeInsertSort(this->list);
+}
+
+std::list<int> PmergeMe::insertSort(std::list<int>& list)
+{
+	// for (std::list<int>::iterator i = list.begin(); i != list.end(); ++i)
+	// {
+	// 	std::list<int>::iterator j = i;
+	// 	while (j != list.begin() && *(--j) > *i)
+	// 	{
+	// 		std::list<int>::iterator next = j;
+	// 		++next;
+	// 		std::swap(*next, *j);
+	// 	}
+	// }
+	// return list;
+	std::list<int>::iterator it = list.begin();
+    std::list<int>::iterator end = list.end();
+
+    for (++it; it != end; ++it) {
+        int value = *it;
+        std::list<int>::iterator hole = it;
+        std::list<int>::iterator prevHole = hole;
+        --prevHole;
+
+        while (hole != list.begin() && value < *prevHole) {
+            *hole = *prevHole;
+            hole = prevHole;
+            --prevHole;
+        }
+
+        *hole = value;
+    }
+	return list;
+}
+
+std::list<int> PmergeMe::mergeSort(const std::list<int>& left, const std::list<int>& right) {
+	std::list<int> merged;
+	std::list<int>::const_iterator leftIt = left.begin();
+	std::list<int>::const_iterator rightIt = right.begin();
+
+	while (leftIt != left.end() && rightIt != right.end()){
+		if (*leftIt <= *rightIt){
+			merged.push_back(*leftIt);
+			++leftIt;
+		}
+		else {
+			merged.push_back(*rightIt);
+			++rightIt;
+		}
+	}
+	while (leftIt != left.end()){
+		merged.push_back(*leftIt);
+		++leftIt;
+	}
+	while (rightIt != right.end())
+	{
+		merged.push_back(*rightIt);
+		++rightIt;
+	}
+	return merged;
+}
+
+std::list<int> PmergeMe::mergeInsertSort(std::list<int>& list) {
+	std::list<int>::iterator it = list.begin();
+
+	if (list.size() <= 10)
+		return insertSort(list);
+	std::advance(it, list.size() / 2);
+	std::list<int> ll(list.begin(), it);
+	std::list<int> rl(it, list.end());
+
+	ll = mergeInsertSort(ll);
+	rl = mergeInsertSort(rl);
+	return mergeSort(ll, rl);
 }
 
 std::list<int> PmergeMe::getList() const {

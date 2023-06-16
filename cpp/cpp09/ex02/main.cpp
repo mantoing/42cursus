@@ -40,9 +40,13 @@ int main(int ac, char **av){
          return 1;
       }
    }
-   std::cout << "LIST" << std::endl;
+   std::cout << "LIST before :" << std::endl;
    myPmerge.print_list();
-   std::cout << "DEQUE" << std::endl;
-   myPmerge.print_deque();
+   myPmerge.start();
+   std::cout << "List after :" << std::endl;
+   myPmerge.print_list();
+
+   // std::cout << "DEQUE" << std::endl;
+   // myPmerge.print_deque();
    return 0;
 }
