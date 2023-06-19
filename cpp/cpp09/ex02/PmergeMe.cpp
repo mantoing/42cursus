@@ -6,8 +6,14 @@ PmergeMe::PmergeMe() {
 
 PmergeMe::PmergeMe(int ac, char **av) {
 	for (int i = 1; i < ac; i++) {
-		saveToList(av[i]);
-		saveToDeque(av[i]);
+		if (isValidvalue(av[i]) == false){
+			std::cout << "Error: ac something wrong" << std::endl;
+    		exit(1);
+		}
+		else {
+			saveToList(av[i]);
+			saveToDeque(av[i]);
+		}
 	}
 }
 
@@ -28,6 +34,22 @@ PmergeMe & PmergeMe::operator=(const PmergeMe& obj) {
 	return *this;
 }
 
+bool PmergeMe::isValidvalue(const std::string& arg) {
+	if (arg.empty() || arg[0] == '-')
+		return false;
+	for (std::size_t i = 0; i < arg.length(); ++i) {
+		if (!std::isdigit(arg[i]))
+			return false;
+	}
+	std::istringstream iss(arg);
+	int num;
+	if (!(iss >> num))
+		return false;
+	if (num < 0 || num > std::numeric_limits<int>::max())
+		return false;
+   return true;
+}
+
 bool PmergeMe::isValidPositiveInt(int num) {
 	if (num < 0 || num > std::numeric_limits<int>::max())
 		return false;
@@ -38,6 +60,28 @@ void PmergeMe::print_list() {
 	std::list<int>::iterator it;
 	for (it = list.begin(); it != list.end(); it++)
 		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+void PmergeMe::print_list(std::list<int>& tmplist) {
+	std::list<int>::iterator it;
+    int count = 0;
+    const int maxDisplay = 4;
+
+    for (it = tmplist.begin(); it != tmplist.end(); it++) {
+        if (count < maxDisplay) {
+            std::cout << *it << " ";
+            count++;
+        } else {
+            break;
+        }
+    }
+
+    if (tmplist.size() > maxDisplay) {
+        std::cout << "[...]";
+    }
+
+    std::cout << std::endl;
 }
 
 void PmergeMe::print_deque() {
@@ -49,11 +93,7 @@ void PmergeMe::saveToDeque(const char* input) {
 	std::istringstream iss(input);
 	int num;
 	while(iss >> num) {
-		if (isValidPositiveInt(num)) {
 			deque.push_back(num);
-		}
-		else 
-			return ;
 	}
 }
 
@@ -61,33 +101,100 @@ void PmergeMe::saveToList(const char* input) {
 	std::istringstream iss(input);
 	int num;
 	while(iss >> num) {
-		if (isValidPositiveInt(num)) {
 			list.push_back(num);
-		}
-		else {
-			std::cout << "Invalid positive integer: " << num << std::endl;
-			return;
-		}
 	}
 }
 
-void PmergeMe::start() {
-	mergeInsertSort(this->list);
+void PmergeMe::start(int ac) {
+	clock_t start, end;
+	std::list<int> tmplist(list);
+	std::cout << "Before:  ";
+	print_list(tmplist);
+	mergeInsertSort(tmplist);
+	std::cout << "After:  ";
+	print_list(tmplist);
+
+	start = clock();
+	mergeInsertSort(list);
+	end = clock();
+
+	std::cout << "Time to process a range of  " << ac - 1 << " elements with std::list : " << end - start << " ms" << std::endl;
+
+	start = clock();
+	mergeInsertSort(deque);
+	end = clock();
+
+	std::cout << "Time to process a range of  " << ac - 1 << " elements with std::deque : " << end - start << " ms" << std::endl;
+
+}
+void PmergeMe::insertSort(std::deque<int>& deque) {
+    std::deque<int>::iterator it = deque.begin();
+    std::deque<int>::iterator end = deque.end();
+
+    for (++it; it != end; ++it) {
+        int value = *it;
+        std::deque<int>::iterator hole = it;
+        std::deque<int>::iterator prevHole = hole;
+        --prevHole;
+
+        while (hole != deque.begin() && value < *prevHole) {
+            *hole = *prevHole;
+            hole = prevHole;
+            --prevHole;
+        }
+
+        *hole = value;
+    }
 }
 
-std::list<int> PmergeMe::insertSort(std::list<int>& list)
+void PmergeMe::mergeSort(std::deque<int>& left, std::deque<int>& right, std::deque<int>& merged) {
+    while (!left.empty() && !right.empty()) {
+        if (left.front() <= right.front()) {
+            merged.push_back(left.front());
+            left.pop_front();
+        } else {
+            merged.push_back(right.front());
+            right.pop_front();
+        }
+    }
+    while (!left.empty()) {
+        merged.push_back(left.front());
+        left.pop_front();
+    }
+    while (!right.empty()) {
+        merged.push_back(right.front());
+        right.pop_front();
+    }
+}
+
+void PmergeMe::mergeInsertSort(std::deque<int>& deque) {
+    if (deque.size() <= 10) {
+        insertSort(deque);
+        return;
+    }
+
+    std::deque<int> left, right;
+    std::deque<int>::iterator it = deque.begin();
+    unsigned int mid = deque.size() / 2;
+
+    for (unsigned int i = 0; i < mid; ++i) {
+        left.push_back(*it);
+        ++it;
+    }
+    for (unsigned int j = mid; j < deque.size(); ++j) {
+        right.push_back(*it);
+        ++it;
+    }
+
+    mergeInsertSort(left);
+    mergeInsertSort(right);
+
+    deque.clear();
+    mergeSort(left, right, deque);
+}
+
+void PmergeMe::insertSort(std::list<int>& list)
 {
-	// for (std::list<int>::iterator i = list.begin(); i != list.end(); ++i)
-	// {
-	// 	std::list<int>::iterator j = i;
-	// 	while (j != list.begin() && *(--j) > *i)
-	// 	{
-	// 		std::list<int>::iterator next = j;
-	// 		++next;
-	// 		std::swap(*next, *j);
-	// 	}
-	// }
-	// return list;
 	std::list<int>::iterator it = list.begin();
     std::list<int>::iterator end = list.end();
 
@@ -105,50 +212,52 @@ std::list<int> PmergeMe::insertSort(std::list<int>& list)
 
         *hole = value;
     }
-	return list;
 }
 
-std::list<int> PmergeMe::mergeSort(const std::list<int>& left, const std::list<int>& right) {
-	std::list<int> merged;
-	std::list<int>::const_iterator leftIt = left.begin();
-	std::list<int>::const_iterator rightIt = right.begin();
-
-	while (leftIt != left.end() && rightIt != right.end()){
-		if (*leftIt <= *rightIt){
-			merged.push_back(*leftIt);
-			++leftIt;
+void PmergeMe::mergeSort(std::list<int>& left, std::list<int>& right, std::list<int>& merged) {
+	while (!left.empty() && !right.empty()) {
+		if (left.front() <= right.front()) {
+			merged.push_back(left.front());
+			left.pop_front();
 		}
 		else {
-			merged.push_back(*rightIt);
-			++rightIt;
+			merged.push_back(right.front());
+			right.pop_front();
 		}
 	}
-	while (leftIt != left.end()){
-		merged.push_back(*leftIt);
-		++leftIt;
+	while (!left.empty()) {
+		merged.push_back(left.front());
+		left.pop_front();
 	}
-	while (rightIt != right.end())
-	{
-		merged.push_back(*rightIt);
-		++rightIt;
+	while (!right.empty()) {
+		merged.push_back(right.front());
+		right.pop_front();
 	}
-	return merged;
 }
 
-std::list<int> PmergeMe::mergeInsertSort(std::list<int>& list) {
+void PmergeMe::mergeInsertSort(std::list<int>& list) {
+	if (list.size() <= 10) {
+		insertSort(list);
+		return ;
+	}
+	std::list<int> left, right;
 	std::list<int>::iterator it = list.begin();
+	unsigned int mid = list.size() / 2;
 
-	if (list.size() <= 10)
-		return insertSort(list);
-	std::advance(it, list.size() / 2);
-	std::list<int> ll(list.begin(), it);
-	std::list<int> rl(it, list.end());
-
-	ll = mergeInsertSort(ll);
-	rl = mergeInsertSort(rl);
-	return mergeSort(ll, rl);
+	for (unsigned int i = 0; i < mid; ++i) {
+		left.push_back(*it);
+		++it;
+	}
+	for (unsigned int j = mid; j < list.size(); ++j) {
+		right.push_back(*it);
+		++it;
+	}
+	
+	mergeInsertSort(left);
+	mergeInsertSort(right);
+	list.clear();
+	mergeSort(left, right, list);
 }
-
 std::list<int> PmergeMe::getList() const {
 	return this->list;
 }

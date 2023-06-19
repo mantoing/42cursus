@@ -18,35 +18,12 @@
 // ㅏ 
 // 6. 프로그램 종료
 
-bool isValidvalue(const std::string& arg) {
-	if (arg.empty() || arg[0] == '-')
-		return false;
-	for (std::size_t i = 0; i < arg.length(); ++i) {
-		if (!std::isdigit(arg[i]))
-			return false;
-	}
-   return true;
-}
-
 int main(int ac, char **av){
 	if (ac < 2) {
 		std::cout << "Error: ac error" << std::endl;
 		return 1;
 	}
    PmergeMe myPmerge(ac, av);
-   for (int i = 1; i < ac; ++i) {
-      if (isValidvalue(av[i]) == false){
-         std::cout << "Error: ac something wrong" << std::endl;
-         return 1;
-      }
-   }
-   std::cout << "LIST before :" << std::endl;
-   myPmerge.print_list();
-   myPmerge.start();
-   std::cout << "List after :" << std::endl;
-   myPmerge.print_list();
-
-   // std::cout << "DEQUE" << std::endl;
-   // myPmerge.print_deque();
+   myPmerge.start(ac);
    return 0;
 }
