@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  nginx:
+    build: req/nginx
+    container_name: nginx
+    ports:
+      - 443:443
+    restart: always
