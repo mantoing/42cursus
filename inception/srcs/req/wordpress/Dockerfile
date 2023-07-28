@@ -1,16 +1,20 @@
 FROM	debian:buster
 
-RUN		apt-get update -y
-RUN		apt-get upgrade -y
-RUN		apt-get install php-fpm -y
-RUN		apt-get install vim -y
-RUN		apt-get install wget -y
-RUN		apt-get install tar -y
+RUN		apt-get update -y && \
+		apt-get upgrade -y && \
+		apt-get -y install php7.3-fpm \
+		wget \
+		tar \
+		vim \
+		php-mbstring \
+		php-mysql \
+		mariadb-client
 
+
+RUN		mkdir -p /var/www/html/
+WORKDIR /var/www/html/
 RUN		wget https://wordpress.org/latest.tar.gz
 RUN		tar -xvzf latest.tar.gz
-RUN		mkdir -p /var/www/html/wordpress
-RUN		mv wordpress/ var/www/html/
 
 COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 

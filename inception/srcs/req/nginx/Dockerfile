@@ -1,10 +1,10 @@
-FROM debian:buster
+FROM	debian:buster
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install nginx -y
-RUN apt-get install openssl -y
-RUN apt-get install vim -y
+RUN		apt-get update -y; \
+    	apt-get upgrade -y; \
+	 	apt-get install nginx -y; \
+ 		apt-get install openssl -y; \
+ 		apt-get install vim -y;
 
 COPY conf/nginx.conf /etc/nginx/sites-available/default
 

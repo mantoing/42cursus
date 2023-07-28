@@ -8,7 +8,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - wp_volume:/var/www/html/wordpress
+      - wp_volume:/var/www/html
     depends_on:
       - wordpress
     networks:
@@ -19,18 +19,31 @@ services:
     container_name: wordpress
     restart: always
     volumes:
-      - wp_volume:/var/www/html/wordpress
+      - wp_volume:/var/www/html
+    depends_on:
+      - mariadb
     expose:
       - "9000"
     networks:
       - inception_network
 
+  mariadb:
+    build: ./req/mariadb/
+    container_name: mariadb
+    restart: always
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    networks:
+      - inception_network
+      
 volumes:
   wp_volume:
      driver: local
      driver_opts:
        type: volume
-       device: /Users/jaeywon/42Cursus/inception/srcs/req/tools
+       device: /Users/jaeywon/42Cursus/inception/srcs/req/volume
        o: bind
 
 networks:
