@@ -2,6 +2,9 @@
 #define WARLOCK_HPP
 
 #include <iostream>
+#include <map>
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 class Warlock
 {
@@ -13,6 +16,8 @@ private:
 	Warlock(const Warlock &src);
 	Warlock &operator=(const Warlock &src);
 
+	std::map<std::string, ASpell *> book;
+
 public:
 	~Warlock();
 
@@ -22,6 +27,10 @@ public:
 
 	void setTitle(const std::string &title);
 	void introduce() const;
+
+	void learnSpell(ASpell *aspell);
+	void forgetSpell(std::string name);
+	void launchSpell(std::string name, const ATarget &atarget);
 };
 
 #endif
