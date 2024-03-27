@@ -4,6 +4,7 @@
 
 |index (readme)|Project name (refo)|Simple explanation|Skill|Collaboration|
 |:---:|:---:|---|:---:|:---:|
+|[8](#minishell)|[minishell](https://github.com/mantoing/Minishell)| create terminal linux | C |team project|
 |[7](#philoshopher)|[philoshopher](https://github.com/mantoing/42cursus/tree/main/philoshpher)|Create thread control|C|single project|
 |[6](#push_swap)|[push_swap](https://github.com/mantoing/42cursus/tree/main/push_swap)|Create My Sort Algorithm|C|single project|
 |[5](#so_long)|[so_long](https://github.com/mantoing/42cursus/tree/main/so_long)|Create my own Game|C|single project|
