@@ -1,5 +1,4 @@
 # 42cursus
-https://github.com/mantoing/42cursus/tree/main/philoshopher
 
 # content
 
